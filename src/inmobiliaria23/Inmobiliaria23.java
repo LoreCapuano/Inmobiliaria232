@@ -10,12 +10,12 @@ public class Inmobiliaria23 {
     public static void main(String[] args) {
 //ALTA INQUILINO
 
-//        Inquilino inquilino = new Inquilino("Capuano", "Lorena", 26800371, "27268003715", 1162245662, "MICROSOFT","Lopez","Julio", true);
-//        InquilinoData inquiData = new InquilinoData();
-//
-//        inquiData.nuevoInquilino(inquilino);
-//        System.out.println(inquilino);
-//BAJA INQUILINO
+        Inquilino inquilino = new Inquilino("Abdala", "Samir",25454656, "20353658964", 221356254, "ulp","Garante1: Capuano Lorena DNI 26800372, garantia propietaria, presento escritura del inmueble sito en Pilar por un monto de $10.000.000; Garante 2: Matias Castro DNI 26532656, presento aval bancari del Banco Galicia SA por un monto de $5.000.000", true);
+        InquilinoData inquiData = new InquilinoData();
+
+        inquiData.nuevoInquilino(inquilino);
+        System.out.println(inquilino);
+////BAJA INQUILINO
 //        Inquilino inquilino = new Inquilino(/*"Adonis", "Nina", 14141414, 171414146, 1160645898, "COCA COLA", 2, true*/);
 //        InquilinoData inquiData = new InquilinoData();
 //        inquiData.bajaInquilino(3);
@@ -63,7 +63,7 @@ public class Inmobiliaria23 {
 //        System.out.println(propietario);
 //BUSCAR PROPIETARIO POR ID
 //        PropietarioData propieD = new PropietarioData();
-//        Propietario propietarioEncontrado = propieD.buscarPropietarioPorId(3);
+//        Propietario propietarioEncontrado = propieD.buscarPropietarioPorId(7);
 //        if (propietarioEncontrado != null) {
 //
 //            System.out.println("DNI: " + propietarioEncontrado.getDni());
@@ -87,9 +87,11 @@ public class Inmobiliaria23 {
 //*****************************************************************************
 //PROPIEDAD INMUEBLE DATA
 //ALTA INMUEBLE
-          PropiedadInmueble propiedadInmueble=new PropiedadInmueble (6,"Deposito","Palermo", "Godoy Cruz 25",300,
-                  "con baño y cocina", "rampa",1000.Of,true);
-//        PropiedadInmuebleData;Po propieData=new PropiedadInmuebleData;
+//
+//            Propietario propietario=new Propietario
+//          PropiedadInmueble propiedadInmueble=new PropiedadInmueble (6,"Deposito","Palermo", "Godoy Cruz 25",300,
+//                  "con baño y cocina", "rampa",1000,true);
+////        PropiedadInmuebleData;Po propieData=new PropiedadInmuebleData;
 //        propieData.nuevoPropietario(propietario);
 //        System.out.println(propietario);
 

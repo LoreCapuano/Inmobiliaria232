@@ -21,7 +21,7 @@ public class InquilinoData {
 
     public void nuevoInquilino(Inquilino inquilino) {
         String sql = "insert into inquilino (apellido,nombre,dni,CUIL,tel,"
-                + "lugarDetrabajo,apellidoGarante,nombreGarante,estado)values (?,?,?,?,?,?,?,?,?)";
+                + "lugarDetrabajo,Garante,estado)values (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, inquilino.getApellido());
@@ -30,9 +30,8 @@ public class InquilinoData {
             ps.setString(4, inquilino.getCUIL());
             ps.setInt(5, inquilino.getTel());
             ps.setString(6, inquilino.getLugarDetrabajo());
-            ps.setString(7, inquilino.getApellidoGarante());
-            ps.setString(8, inquilino.getNombreGarante());
-            ps.setBoolean(9, inquilino.isEstado());
+            ps.setString(7, inquilino.getGarante());
+            ps.setBoolean(8, inquilino.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -65,7 +64,7 @@ public class InquilinoData {
     public void modificarInquilino(Inquilino inquilino) {
         String sql = "UPDATE inquilino SET Apellido = ?, Nombre = ?, "
                 + "Dni = ?, CUIL = ?, tel = ?, "
-                + "lugarDetrabajo = ?,apellidoGarante= ?, nombreGarante=?, estado = ? WHERE idInquilino = ?";
+                + "lugarDetrabajo = ?,Garante= ?, estado = ? WHERE idInquilino = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -75,10 +74,10 @@ public class InquilinoData {
             ps.setString(4, inquilino.getCUIL());
             ps.setInt(5, inquilino.getTel());
             ps.setString(6, inquilino.getLugarDetrabajo());
-            ps.setString(7, inquilino.getApellidoGarante());
-            ps.setString(8, inquilino.getNombreGarante());
-            ps.setBoolean(9, inquilino.isEstado());
-            ps.setInt(10, inquilino.getId_inquilino());
+            ps.setString(7, inquilino.getGarante());
+           
+            ps.setBoolean(8, inquilino.isEstado());
+            ps.setInt(9, inquilino.getId_inquilino());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Inquilino modificado exitosamente");
@@ -90,7 +89,7 @@ public class InquilinoData {
     }
 
     public Inquilino buscarInquilinoPorid(int id) {
-        String sql = "SELECT apellido,nombre, dni, CUIL,tel,lugarDetrabajo,apellidoGarante,nombreGarante, estado FROM inquilino WHERE idInquilino=? ";
+        String sql = "SELECT apellido,nombre, dni, CUIL,tel,lugarDetrabajo,Garante, estado FROM inquilino WHERE idInquilino=? ";
         Inquilino inquilino = null;
 
         try {
@@ -106,8 +105,8 @@ public class InquilinoData {
                 inquilino.setCUIL(rs.getString("CUIL"));
                 inquilino.setTel(rs.getInt("tel"));
                 inquilino.setLugarDetrabajo(rs.getString("lugarDeTrabajo"));
-                inquilino.setApellidoGarante(rs.getString("apellidoGarante"));
-                inquilino.setNombreGarante(rs.getString("nombreGarante"));
+                inquilino.setGarante(rs.getString("Garante"));
+                
                 inquilino.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe un inquilino con ese Id");
@@ -121,7 +120,7 @@ public class InquilinoData {
     }
 
     public Inquilino buscarInquilinoPorDni(int dni) {
-        String sql = "SELECT idInquilino,apellido,nombre, dni, CUIL,tel,lugarDetrabajo,apellidoGarante,nombreGarante, estado FROM inquilino WHERE dni=? ";
+        String sql = "SELECT idInquilino,apellido,nombre, dni, CUIL,tel,lugarDetrabajo,Garante, estado FROM inquilino WHERE dni=? ";
         Inquilino inquilino = null;
 
         try {
@@ -137,8 +136,7 @@ public class InquilinoData {
                 inquilino.setCUIL(rs.getString("CUIL"));
                 inquilino.setTel(rs.getInt("tel"));
                 inquilino.setLugarDetrabajo(rs.getString("lugarDeTrabajo"));
-                inquilino.setApellidoGarante(rs.getString("apellidoGarante"));
-                inquilino.setNombreGarante(rs.getString("nombreGarante"));
+                inquilino.setGarante(rs.getString("Garante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe un inquilino con ese DNI");

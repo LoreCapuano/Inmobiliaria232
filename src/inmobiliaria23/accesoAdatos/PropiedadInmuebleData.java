@@ -18,8 +18,8 @@ public class PropiedadInmuebleData {
     }
 
     public void altaInmueble(PropiedadInmueble propiedadInmueble) {
-String sql = "insert into inmueble (Propietario idPropietario,tipoDeLocal,zona, direccion,superficie,caracteristicas, accesibilidad,"
-                + "precioTasado,estado)values (?,?,?,?,?,?,?,?,?)";
+String sql = "insert into inmueble (idPropietario,tipo,zona, direccion,superficie,caracteristicas, accesibilidad,"
+                + "precioBase,estado)values (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setInt(1, propiedadInmueble.getIdPropietario().getId_propietario());

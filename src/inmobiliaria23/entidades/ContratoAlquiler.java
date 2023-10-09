@@ -10,28 +10,35 @@ public class ContratoAlquiler {
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
     private LocalDate fechaRealizacion;
-    private PropiedadInmueble propiedad;
-    private String estado;//vigente=1, no vigente=0, Renovado=renovado
+    private PropiedadInmueble idpropiedad;
+    private String Detalles;//con o sin expensas/con-sin servicios/con-sin garage
+    private String estado;//vigente=1, no vigente=0, Renovado=2
 //constructor vacio
     public ContratoAlquiler() {
     }
 //constructor completo
-    public ContratoAlquiler(int id_contrato, Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, PropiedadInmueble propiedad, String marca) {
+
+    public ContratoAlquiler(int id_contrato, Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, PropiedadInmueble idpropiedad, String Detalles, String estado) {
         this.id_contrato = id_contrato;
         this.inquilino = inquilino;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.fechaRealizacion = fechaRealizacion;
-        this.propiedad = propiedad;
+        this.idpropiedad = idpropiedad;
+        this.Detalles = Detalles;
         this.estado = estado;
+    
+    
     }
 //constructor sin id
-    public ContratoAlquiler(Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, PropiedadInmueble propiedad, String marca) {
+
+    public ContratoAlquiler(Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, PropiedadInmueble idpropiedad, String Detalles, String estado) {
         this.inquilino = inquilino;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.fechaRealizacion = fechaRealizacion;
-        this.propiedad = propiedad;
+        this.idpropiedad = idpropiedad;
+        this.Detalles = Detalles;
         this.estado = estado;
     }
 
@@ -75,12 +82,20 @@ public class ContratoAlquiler {
         this.fechaRealizacion = fechaRealizacion;
     }
 
-    public PropiedadInmueble getPropiedad() {
-        return propiedad;
+    public PropiedadInmueble getIdpropiedad() {
+        return idpropiedad;
     }
 
-    public void setPropiedad(PropiedadInmueble propiedad) {
-        this.propiedad = propiedad;
+    public void setIdpropiedad(PropiedadInmueble idpropiedad) {
+        this.idpropiedad = idpropiedad;
+    }
+
+    public String getDetalles() {
+        return Detalles;
+    }
+
+    public void setDetalles(String Detalles) {
+        this.Detalles = Detalles;
     }
 
     public String getEstado() {
@@ -93,10 +108,11 @@ public class ContratoAlquiler {
 
     @Override
     public String toString() {
-        return "ContratoAlquiler{" + "inquilino=" + inquilino + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", fechaRealizacion=" + fechaRealizacion + '}';
+        return "ContratoAlquiler{" + "id_contrato=" + id_contrato + ", inquilino=" + inquilino + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", fechaRealizacion=" + fechaRealizacion + ", idpropiedad=" + idpropiedad + ", Detalles=" + Detalles + ", estado=" + estado + '}';
     }
-  
     
+    }
+
     
-    
-}
+
+

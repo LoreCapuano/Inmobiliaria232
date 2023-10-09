@@ -12,8 +12,8 @@ public class Inquilino {
     private String CUIL;
     private int tel;
     private String lugarDetrabajo;
-    private String apellidoGarante;
-    private String nombreGarante;
+    private String Garante;
+  
     private boolean estado;
 
 //    private char tipo;//??
@@ -25,7 +25,7 @@ public class Inquilino {
     }
 //constructor completo
 
-    public Inquilino(int id_inquilino, String apellido, String nombre, int dni, String CUIL, int tel, String lugarDetrabajo, String apellidoGarante, String nombreGarante, boolean estado) {
+    public Inquilino(int id_inquilino, String apellido, String nombre, int dni, String CUIL, int tel, String lugarDetrabajo, String Garante, boolean estado) {
         this.id_inquilino = id_inquilino;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -33,21 +33,19 @@ public class Inquilino {
         this.CUIL = CUIL;
         this.tel = tel;
         this.lugarDetrabajo = lugarDetrabajo;
-        this.apellidoGarante = apellidoGarante;
-        this.nombreGarante = nombreGarante;
+        this.Garante = Garante;
         this.estado = estado;
     }
 
     //constructor sin id
-    public Inquilino(String apellido, String nombre, int dni, String CUIL, int tel, String lugarDetrabajo, String apellidoGarante, String nombreGarante, boolean estado) {
+    public Inquilino(String apellido, String nombre, int dni, String CUIL, int tel, String lugarDetrabajo, String Garante, boolean estado) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
         this.CUIL = CUIL;
         this.tel = tel;
         this.lugarDetrabajo = lugarDetrabajo;
-        this.apellidoGarante = apellidoGarante;
-        this.nombreGarante = nombreGarante;
+        this.Garante = Garante;
         this.estado = estado;
     }
 
@@ -107,21 +105,15 @@ public class Inquilino {
         this.lugarDetrabajo = lugarDetrabajo;
     }
 
-    public String getApellidoGarante() {
-        return apellidoGarante;
+    public String getGarante() {
+        return Garante;
     }
 
-    public void setApellidoGarante(String apellidoGarante) {
-        this.apellidoGarante = apellidoGarante;
+    public void setGarante(String Garante) {
+        this.Garante = Garante;
     }
 
-    public String getNombreGarante() {
-        return nombreGarante;
-    }
-
-    public void setNombreGarante(String nombreGarante) {
-        this.nombreGarante = nombreGarante;
-    }
+   
 
     public boolean isEstado() {
         return estado;
@@ -133,7 +125,7 @@ public class Inquilino {
 
     @Override
     public String toString() {
-        return "Inquilino{" + "apellido=" + apellido + ", nombre=" + nombre + ", dni=" + dni + ", CUIL=" + CUIL + ", tel=" + tel + ", lugarDetrabajo=" + lugarDetrabajo + ", apellidoGarante=" + apellidoGarante + ", nombreGarante=" + nombreGarante + ", estado=" + estado + '}';
+        return "Inquilino{" + "apellido=" + apellido + ", nombre=" + nombre + ", dni=" + dni + ", CUIL=" + CUIL + ", tel=" + tel + ", lugarDetrabajo=" + lugarDetrabajo + ", Garante=" + Garante +  ", estado=" + estado + '}';
     }
 
 }
