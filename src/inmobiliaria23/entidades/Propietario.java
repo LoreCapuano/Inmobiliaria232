@@ -31,6 +31,11 @@ public class Propietario {
    
 //constructor sin id
 
+    public Propietario(int id_propietario) {
+        this.id_propietario = id_propietario;
+       
+    }
+
     public Propietario(String apellido, String nombre, int dni, int tel, String domicilio, boolean estado) {
         this.apellido = apellido;
         this.nombre = nombre;
@@ -38,7 +43,6 @@ public class Propietario {
         this.tel = tel;
         this.domicilio = domicilio;
         this.estado = estado;
-       
     }
 
     public int getId_propietario() {

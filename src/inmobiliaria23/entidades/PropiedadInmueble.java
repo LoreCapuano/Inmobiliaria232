@@ -3,7 +3,7 @@ package inmobiliaria23.entidades;
 
 
 public class PropiedadInmueble {
-    private Propietario idPropietario;  
+    private Propietario propietario;  
     private int idInmueble;
     private String tipoDeLocal;//deposito,oficina,local,departamento 1,2,3 o + ambientes
     private String zona;
@@ -12,7 +12,7 @@ public class PropiedadInmueble {
     private String caracteristicas;//amueblado,sin amueblar,escalera, escalera y ascensor, rampa acceso a discap
     private String accesibilidad;//rampa acceso
     private float precioTasado;
-    private boolean estado;//Disponible=0, No disponible=1
+    private boolean estado;//Disponible=1, No disponible=0
     
     
     
@@ -23,8 +23,8 @@ public class PropiedadInmueble {
     }
 //constructor completo
 
-    public PropiedadInmueble(Propietario idPropietario, int idInmueble, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
-        this.idPropietario = idPropietario;
+    public PropiedadInmueble(Propietario propietario, int idInmueble, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
+        this.propietario= propietario;
         this.idInmueble = idInmueble;
         this.tipoDeLocal = tipoDeLocal;
         this.zona = zona;
@@ -36,8 +36,8 @@ public class PropiedadInmueble {
         this.estado = estado;
     }
 
-    public PropiedadInmueble(Propietario idPropietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
-        this.idPropietario = idPropietario;
+    public PropiedadInmueble(Propietario Propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
+        this.propietario = propietario;
         this.tipoDeLocal = tipoDeLocal;
         this.zona = zona;
         this.direccion = direccion;
@@ -49,12 +49,12 @@ public class PropiedadInmueble {
         
     }
 
-    public Propietario getIdPropietario() {
-        return idPropietario;
+    public Propietario getPropietario() {
+        return propietario;
     }
 
-    public void setIdPropietario(Propietario idPropietario) {
-        this.idPropietario = idPropietario;
+    public void setPropietario(Propietario Propietario) {
+        this.propietario = propietario;
     }
 
     public int getIdInmueble() {
@@ -131,8 +131,10 @@ public class PropiedadInmueble {
 
     @Override
     public String toString() {
-        return "PropiedadInmueble{" + "idPropietario=" + idPropietario + ", idInmueble=" + idInmueble + ", tipoDeLocal=" + tipoDeLocal + ", zona=" + zona + ", direccion=" + direccion + ", superficie=" + superficie + ", caracteristicas=" + caracteristicas + ", accesibilidad=" + accesibilidad + ", precioTasado=" + precioTasado + ", estado=" + estado + '}';
+        return "PropiedadInmueble{" + "propietario=" + propietario + ", idInmueble=" + idInmueble + ", tipoDeLocal=" + tipoDeLocal + ", zona=" + zona + ", direccion=" + direccion + ", superficie=" + superficie + ", caracteristicas=" + caracteristicas + ", accesibilidad=" + accesibilidad + ", precioTasado=" + precioTasado + ", estado=" + estado + '}';
     }
+
+    
     
 }   
         
