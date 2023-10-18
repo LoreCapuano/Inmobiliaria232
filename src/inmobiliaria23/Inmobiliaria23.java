@@ -110,8 +110,28 @@ public class Inmobiliaria23 {
 //        }
 //    }
 //LISTAR INMUEBLES DISPONIBLES
+//        try {
+//
+//            PropiedadInmuebleData propieData = new PropiedadInmuebleData();
+//            List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponibles(Boolean.TRUE);//<una lista de tipo>nombre de la lista
+//            if (!listaInmuebles.isEmpty()) {
+//                for (PropiedadInmueble inmueble : listaInmuebles) {
+//                    System.out.println("id " + inmueble.getIdInmueble());
+//                    System.out.println("Tipo: " + inmueble.getTipoDeLocal());
+//                    System.out.println("Direccion: " + inmueble.getDireccion());
+//                   //System.out.println("Dueño: " + inmueble.getPropietario().getId_propietario());
+//                                                                                                                                                            
+//                    System.out.println("-------------------");
+//                }
+//            } else {
+//                System.out.println("No existen propiedades de ese tipo");
+//            }
+//        } catch (NullPointerException npe) {
+//           JOptionPane.showMessageDialog(null,"error"+npe.getMessage());
+//        }
+ //   }   }
+// LISTAR INMUEBLES DISPONIBLES Y SU DUEÑO
         try {
-
             PropiedadInmuebleData propieData = new PropiedadInmuebleData();
             List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponibles(Boolean.TRUE);//<una lista de tipo>nombre de la lista
             if (!listaInmuebles.isEmpty()) {
@@ -119,7 +139,7 @@ public class Inmobiliaria23 {
                     System.out.println("id " + inmueble.getIdInmueble());
                     System.out.println("Tipo: " + inmueble.getTipoDeLocal());
                     System.out.println("Direccion: " + inmueble.getDireccion());
-                   //System.out.println("Dueño: " + inmueble.getPropietario().getId_propietario());
+                   System.out.println("Dueño: " + inmueble.getPropietario().getId_propietario());
                                                                                                                                                             
                     System.out.println("-------------------");
                 }
@@ -129,26 +149,11 @@ public class Inmobiliaria23 {
         } catch (NullPointerException npe) {
            JOptionPane.showMessageDialog(null,"error"+npe.getMessage());
         }
-//    }
-// LISTAR INMUEBLES DISPONIBLES Y SU DUEÑO
-//        PropiedadInmuebleData data = new PropiedadInmuebleData();
-//        Boolean estado = true;
-//        ArrayList<PropiedadInmueble> listaInmuebles = data.listarInmueblesDisponiblesYsuDueño(Boolean.TRUE);//<una lista de tipo>nombre de la lista
-//        if (!listaInmuebles.isEmpty()) {
-//            for (PropiedadInmueble propiedad : listaInmuebles) {
-//                System.out.println("id " + propiedad.getIdInmueble());
-//                System.out.println("Tipo: " + propiedad.getTipoDeLocal());
-//                System.out.println("Direccion: " + propiedad.getDireccion());
-//                System.out.println("Dueño: " + propiedad.getPropietario().getId_propietario());
-//
-//                System.out.println("-------------------");
-//            }
-//        } else {
-//            System.out.println("No existen propiedades ");
-//        }
-//
-//    }
-}}
+    }
+
+        
+}  
+    
 
 //LISTAR INMUEBLES PROPIOS (LISTA DE INMUEBLES DE UN PROPIETARIO)
 //        PropiedadInmuebleData propieData = new PropiedadInmuebleData();

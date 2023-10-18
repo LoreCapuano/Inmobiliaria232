@@ -69,6 +69,7 @@ public class PropiedadInmuebleData {
         String sql = "SELECT idInmueble,idPropietario, Tipo, Direccion, Zona, Superficie, Caracteristicas,"
                 + " Accesibilidad,precioBase, estado FROM inmueble WHERE estado=1 ";
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setBoolean(1, estado);
@@ -97,6 +98,33 @@ public class PropiedadInmuebleData {
         }
         return listaInmuebles;
     }
+    
+    public void modificarInmueble(PropiedadInmueble propiedadInmueble){
+        String sql = "UPDATE propiedadInmueble SET idPropietario=?,Tipo = ?, Direccion = ?, "
+                + "Zona = ?, Superficie = ?, Caracteristicas=?, Accesibilidad=?, precioBase=?,estado=? WHERE idInmueble=?";
+
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, propiedadInmueble.getPropietario().getId_propietario());
+            ps.setString(2, propiedadInmueble.getTipoDeLocal());
+            ps.setString(3, propiedadInmueble.getDireccion());
+            ps.setString(4, propiedadInmueble.getZona());
+            ps.setInt(5, propiedadInmueble.getSuperficie());
+            ps.setString(6, propiedadInmueble.getCaracteristicas());
+            ps.setString(7, propiedadInmueble.getAccesibilidad());
+            ps.setFloat(8, propiedadInmueble.getPrecioTasado());
+            ps.setBoolean(9,propiedadInmueble.getEstado());
+            ps.setInt(10,propiedadInmueble.getIdInmueble());
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Propietario modificado exitosamente");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+        }
+    }
 
     public List<PropiedadInmueble> listarInmueblesDisponiblesYsuDueño(Boolean estado) {
 
@@ -104,7 +132,7 @@ public class PropiedadInmuebleData {
                 + " o.nombre AS nombreDueno, o.apellido AS apellidoDueno, o.idPropietario AS idPropietario "
                 + "FROM Inmueble i INNER JOIN Propietario o ON i.idPropietario = o.idPropietario WHERE i.Estado= ?;";
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
-        System.out.println(listaInmuebles);
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setBoolean(1, estado);
@@ -121,8 +149,7 @@ public class PropiedadInmuebleData {
                 // Crear un objeto Dueno con los datos del dueño
                 Propietario propietario = new Propietario();
 
-                propietario.setNombre(rs.getString("nombrePropietario"));
-                propietario.setApellido(rs.getString("apellidoPropietario"));
+                propietario.setId_propietario(rs.getInt("idPropietario"));
 
                 // Asignar el propietario a la propiedad
                 propiedad.setPropietario(propietario);
@@ -136,7 +163,9 @@ public class PropiedadInmuebleData {
                 ps.close();
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble");
+            ex.printStackTrace();
+            
+            JOptionPane.showMessageDialog(null,"error al acceder a la tabla");
         }
         return listaInmuebles;
     }
