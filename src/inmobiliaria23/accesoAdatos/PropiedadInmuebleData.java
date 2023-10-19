@@ -146,17 +146,19 @@ public class PropiedadInmuebleData {
                 propiedad.setSuperficie(rs.getInt("superficie"));
                 propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
                 propiedad.setEstado(rs.getBoolean("estado"));
+                //propiedad.setPropietario(Propietario);
                 // Crear un objeto Dueno con los datos del dueño
-                Propietario propietario = new Propietario();
-
-                propietario.setId_propietario(rs.getInt("idPropietario"));
-
-                // Asignar el propietario a la propiedad
+                
+                PropietarioData pd=new PropietarioData();
+                
+                Propietario propietario =pd.buscarPropietarioPorId(rs.getInt("idPropietario"));
+                //Asignar el propietario a la propiedad
+                //System.out.println("id prop " +propietario.getId_propietario());
                 propiedad.setPropietario(propietario);
-
+//              
                 // Agregar la propiedad a la lista
                 listaInmuebles.add(propiedad);
-
+//                System.out.println("Propiedad: "+propiedad.getPropietario().getNombre());    
             }
             if (listaInmuebles.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "No se encontraron propiedades disponibles");

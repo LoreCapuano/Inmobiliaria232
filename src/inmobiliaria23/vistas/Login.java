@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package inmobiliaria23.vistas;
 
 import java.awt.Color;
@@ -11,10 +7,7 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-/**
- *
- * @author mgandolfo
- */
+
 public class Login extends javax.swing.JFrame {
 
     int xMouse, yMouse;
@@ -306,7 +299,7 @@ public class Login extends javax.swing.JFrame {
             dispose();
 
         } else {
-            mensajeAdvertencia me = new mensajeAdvertencia(this, true);
+            mensajeOKyCancel me = new mensajeOKyCancel(this, true);
             me.setVisible(true);
             userTxt.setText("");
             passTxt.setText("");

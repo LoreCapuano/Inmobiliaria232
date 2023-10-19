@@ -69,7 +69,6 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         jTextID.setBorder(null);
         jTextID.setPreferredSize(new java.awt.Dimension(165, 30));
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setMaximizable(true);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(700, 400));
