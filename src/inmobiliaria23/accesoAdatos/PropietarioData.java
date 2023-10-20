@@ -118,7 +118,7 @@ public class PropietarioData {
         }
         return propietario;
     }
-public Propietario buscarPropietarioPorDni(int dni) {
+    public Propietario buscarPropietarioPorDni(int dni) {
         String sql = "SELECT idPropietario,apellido,nombre, dni,tel,domicilio,estado FROM propietario WHERE dni=? ";
         Propietario propietario = null;
 
@@ -146,4 +146,40 @@ public Propietario buscarPropietarioPorDni(int dni) {
         }
         return propietario;
     }
+    
+    public ArrayList<Propietario> listarPropietarios() {
+        ArrayList<Propietario> milista = new ArrayList<>();
+        String sql = "SELECT * FROM propietario";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Propietario propietario = new Propietario();
+                propietario.setId_propietario(rs.getInt("id_propietario"));
+                propietario.setNombre(rs.getString("apellido"));
+                propietario.setApellido(rs.getString("nombre"));
+                propietario.setDni(rs.getInt("dni"));
+                propietario.setTel(rs.getInt("tel"));
+                propietario.setDomicilio(rs.getString("domicilio"));
+                propietario.setEstado(rs.getBoolean("estado"));
+                
+
+                milista.add(propietario);
+
+            }
+
+            return milista;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se pudo listar los propietarios " + "\n error:" + ex.getMessage());
+            return milista;
+        }
+
+    }
+
+
+
 }
+
+    
+

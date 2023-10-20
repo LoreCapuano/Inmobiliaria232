@@ -58,7 +58,7 @@ public class PropiedadInmueble {
         return propietario;
     }
 
-    public void setPropietario(Propietario Propietario) {
+    public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
     }
 
