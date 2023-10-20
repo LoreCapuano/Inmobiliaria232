@@ -49,6 +49,11 @@ public class PropiedadInmueble {
         
     }
 
+    public PropiedadInmueble(int idInmueble) {
+        this.idInmueble = idInmueble;
+    }
+    
+
     public Propietario getPropietario() {
         return propietario;
     }
