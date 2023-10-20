@@ -6,9 +6,14 @@
 package inmobiliaria23.vistas;
 
 import inmobiliaria23.entidades.InternaljFrameImagen;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,25 +23,28 @@ public class MenuView extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     private String users;
+
     public MenuView() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setSize(1024, 768);
-        
-        
-    }
-    public void setUsuarios(String users) {
-        this.users = users;
-       //AccesoUsuario.setText(users);
-       
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centerX = (int) (screenSize.getWidth() - this.getWidth()) / 2;
+        int centerY = (int) (screenSize.getHeight() - this.getHeight()) / 2;
+        this.setLocation(centerX, centerY);
     }
 
+    public void setUsuarios(String users) {
+        this.users = users;
+        //AccesoUsuario.setText(users);
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icono=new ImageIcon(getClass().getResource("/inmobiliaria23/recursos/FondoFinalINTERNA.jpg"));
+        ImageIcon icono=new ImageIcon(getClass().getResource("/inmobiliaria23/recursos/FondoFinalINTERNA_1.jpg"));
         Image miImagen=icono.getImage();
         escritorio = new javax.swing.JDesktopPane(){
 
@@ -46,216 +54,214 @@ public class MenuView extends javax.swing.JFrame {
             }
 
         };
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuLupa2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuRegisInmueble = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuContrato = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuSalir = new javax.swing.JMenu();
-        jMenuLupa = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jPanelMenuPrincipal = new javax.swing.JPanel();
+        BtnRegistrar = new inmobiliaria23.entidades.BotonNegro();
+        BtnRegistrar1 = new inmobiliaria23.entidades.BotonNegro();
+        botonNegro2 = new inmobiliaria23.entidades.BotonNegro();
+        botonNegro3 = new inmobiliaria23.entidades.BotonNegro();
+        botonNegro4 = new inmobiliaria23.entidades.BotonNegro();
+        botonRojo1 = new inmobiliaria23.entidades.BotonRojo();
+        header = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelMenuPrincipal.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMenuPrincipal.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jPanelMenuPrincipal.setInheritsPopupMenu(true);
+        jPanelMenuPrincipal.setOpaque(false);
+        jPanelMenuPrincipal.setPreferredSize(new java.awt.Dimension(512, 50));
+        jPanelMenuPrincipal.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
+
+        BtnRegistrar.setBorder(null);
+        BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/registrar-usuario25px.png"))); // NOI18N
+        BtnRegistrar.setText("PROPIETARIOS");
+        BtnRegistrar.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        BtnRegistrar.setPreferredSize(new java.awt.Dimension(120, 28));
+        BtnRegistrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/registrar-usuario25px.png"))); // NOI18N
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(BtnRegistrar);
+
+        BtnRegistrar1.setBorder(null);
+        BtnRegistrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/registrar-usuario25px.png"))); // NOI18N
+        BtnRegistrar1.setText("INQUILINOS");
+        BtnRegistrar1.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        BtnRegistrar1.setPreferredSize(new java.awt.Dimension(120, 28));
+        BtnRegistrar1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/registrar-usuario25px.png"))); // NOI18N
+        BtnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrar1ActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(BtnRegistrar1);
+
+        botonNegro2.setBorder(null);
+        botonNegro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/inmuebles-menu.png"))); // NOI18N
+        botonNegro2.setText(" INMUEBLES");
+        botonNegro2.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        botonNegro2.setPreferredSize(new java.awt.Dimension(120, 28));
+        botonNegro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNegro2ActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(botonNegro2);
+
+        botonNegro3.setBorder(null);
+        botonNegro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/contract-25.png"))); // NOI18N
+        botonNegro3.setText(" CONTRATOS");
+        botonNegro3.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        botonNegro3.setPreferredSize(new java.awt.Dimension(120, 28));
+        botonNegro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNegro3ActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(botonNegro3);
+
+        botonNegro4.setBorder(null);
+        botonNegro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/lupa-25.png"))); // NOI18N
+        botonNegro4.setText(" BUSCADOR");
+        botonNegro4.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        botonNegro4.setPreferredSize(new java.awt.Dimension(120, 28));
+        botonNegro4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNegro4ActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(botonNegro4);
+
+        botonRojo1.setBorder(null);
+        botonRojo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/exits.png"))); // NOI18N
+        botonRojo1.setText("SALIR ");
+        botonRojo1.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        botonRojo1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonRojo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRojo1ActionPerformed(evt);
+            }
+        });
+        jPanelMenuPrincipal.add(botonRojo1);
+
+        header.setBackground(new java.awt.Color(0, 0, 0));
+        header.setOpaque(false);
+        header.setPreferredSize(new java.awt.Dimension(250, 40));
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1024, Short.MAX_VALUE)
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+
+        escritorio.setLayer(jPanelMenuPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(header, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addComponent(jPanelMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 725, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(jPanelMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(720, Short.MAX_VALUE))
+            .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setAlignmentY(0.5F);
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jMenuBar1MouseDragged(evt);
-            }
-        });
-        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuBar1MousePressed(evt);
-            }
-        });
-
-        jMenuLupa2.setBorder(null);
-        jMenuLupa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/register.png"))); // NOI18N
-        jMenuLupa2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jMenuItem1.setText("Registrar Propietario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenuLupa2.add(jMenuItem1);
-
-        jMenuItem2.setText("Registrar Inquilino y Garante");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenuLupa2.add(jMenuItem2);
-
-        jMenuBar1.add(jMenuLupa2);
-
-        jMenuRegisInmueble.setBorder(null);
-        jMenuRegisInmueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/comprar-casa.png"))); // NOI18N
-        jMenuRegisInmueble.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jMenuItem4.setText("Registrar Inmueble");
-        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenuRegisInmueble.add(jMenuItem4);
-
-        jMenuBar1.add(jMenuRegisInmueble);
-
-        jMenuContrato.setBorder(null);
-        jMenuContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/contrato.png"))); // NOI18N
-        jMenuContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jMenuItem5.setText("Contrato de Alquiler");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenuContrato.add(jMenuItem5);
-
-        jMenuBar1.add(jMenuContrato);
-
-        jMenuSalir.setBorder(null);
-        jMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/Salida.png"))); // NOI18N
-        jMenuSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuSalirMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenuSalir);
-
-        jMenuLupa.setBorder(null);
-        jMenuLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/lupa.png"))); // NOI18N
-        jMenuLupa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jMenuItem6.setText("Buscador de Inmuebles");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenuLupa.add(jMenuItem6);
-
-        jMenuBar1.add(jMenuLupa);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
+        getContentPane().add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuSalirMouseClicked
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
 
-    private void jMenuBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MousePressed
-        // TODO add your handling code here:
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_jMenuBar1MousePressed
+        //escritorio.removeAll();
+        escritorio.repaint();
+        registroPropietario Rp = new registroPropietario();
+        Rp.setVisible(true);
+        escritorio.add(Rp);
+        escritorio.moveToFront(Rp);
 
-    private void jMenuBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseDragged
-        // TODO add your handling code here:
+
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
+
+    private void botonRojo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRojo1ActionPerformed
+        mensajeOKyCancel msSalir = new mensajeOKyCancel(this, true);
+        msSalir.setVisible(true);
+    }//GEN-LAST:event_botonRojo1ActionPerformed
+
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_jMenuBar1MouseDragged
+    }//GEN-LAST:event_headerMouseDragged
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
+    private void BtnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrar1ActionPerformed
+        //escritorio.removeAll();
         escritorio.repaint();
-        registroInmueble rin=new registroInmueble();
-        rin.setVisible(true);
-        escritorio.add(rin);
-        escritorio.moveToFront(rin);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        registroInquilinoyGarante Rp = new registroInquilinoyGarante();
+        Rp.setVisible(true);
+        escritorio.add(Rp);
+        escritorio.moveToFront(Rp);
+    }//GEN-LAST:event_BtnRegistrar1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
-        escritorio.removeAll();
+    private void botonNegro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNegro2ActionPerformed
+        //escritorio.removeAll();
         escritorio.repaint();
-        registroInquilinoyGarante rig=new registroInquilinoyGarante();
-        rig.setVisible(true);
-        escritorio.add(rig);
-        escritorio.moveToFront(rig);
-        InternaljFrameImagen internal = new InternaljFrameImagen();
-       
-        int x = (escritorio.getWidth() - internal.getWidth())/2;
-        int y = (escritorio.getHeight() - internal.getHeight())/2;
-        internal.setLocation(x, y);
-        escritorio.add(internal);
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        registroInmueble Rp = new registroInmueble();
+        Rp.setVisible(true);
+        escritorio.add(Rp);
+        escritorio.moveToFront(Rp);
+    }//GEN-LAST:event_botonNegro2ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
+    private void botonNegro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNegro3ActionPerformed
+        //escritorio.removeAll();
         escritorio.repaint();
-        buscadorInmuebles bin=new buscadorInmuebles();
-        bin.setVisible(true);
-        escritorio.add(bin);
-        escritorio.moveToFront(bin);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+        contratoDeAlquiler Rp = new contratoDeAlquiler();
+        Rp.setVisible(true);
+        escritorio.add(Rp);
+        escritorio.moveToFront(Rp);
+    }//GEN-LAST:event_botonNegro3ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
+    private void botonNegro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNegro4ActionPerformed
+        //escritorio.removeAll();
         escritorio.repaint();
-        registroPropietario rpr=new registroPropietario();
-        rpr.setVisible(true);
-        escritorio.add(rpr);
-        escritorio.moveToFront(rpr);
-        InternaljFrameImagen internal = new InternaljFrameImagen();
-        escritorio.add(internal);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        contratoDeAlquiler cda=new contratoDeAlquiler();
-        cda.setVisible(true);
-        escritorio.add(cda);
-        escritorio.moveToFront(cda);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        buscadorInmuebles Rp = new buscadorInmuebles();
+        Rp.setVisible(true);
+        escritorio.add(Rp);
+        escritorio.moveToFront(Rp);
+    }//GEN-LAST:event_botonNegro4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,17 +299,14 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private inmobiliaria23.entidades.BotonNegro BtnRegistrar;
+    private inmobiliaria23.entidades.BotonNegro BtnRegistrar1;
+    private inmobiliaria23.entidades.BotonNegro botonNegro2;
+    private inmobiliaria23.entidades.BotonNegro botonNegro3;
+    private inmobiliaria23.entidades.BotonNegro botonNegro4;
+    private inmobiliaria23.entidades.BotonRojo botonRojo1;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuContrato;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenu jMenuLupa;
-    private javax.swing.JMenu jMenuLupa2;
-    private javax.swing.JMenu jMenuRegisInmueble;
-    private javax.swing.JMenu jMenuSalir;
+    private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanelMenuPrincipal;
     // End of variables declaration//GEN-END:variables
 }

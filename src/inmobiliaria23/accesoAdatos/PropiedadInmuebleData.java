@@ -268,4 +268,36 @@ public class PropiedadInmuebleData {
         }
         return propiedad;
     }
+
+     public List<PropiedadInmueble> listarInmuebles() {//lista de las propiedades 
+        String sql = "SELECT* FROM inmueble ";
+        //ArrayList<PropiedadInmueble> PropiedadInmueble = new ArrayList<>();
+        ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+           
+            ResultSet rs = ps.executeQuery();
+            //if (listaInmuebles != null) {
+            while (rs.next()) {
+                PropiedadInmueble propiedadInmueble = new PropiedadInmueble();
+                propiedadInmueble.setIdInmueble(rs.getInt("idInmueble"));
+                propiedadInmueble.setTipoDeLocal(rs.getString("Tipo"));
+                propiedadInmueble.setDireccion(rs.getString("Direccion"));
+                propiedadInmueble.setZona(rs.getString("Zona"));
+                propiedadInmueble.setSuperficie(rs.getInt("Superficie"));
+                propiedadInmueble.setPrecioTasado(rs.getInt("PrecioBase"));
+                propiedadInmueble.setEstado(rs.getBoolean("Estado"));
+                //PropiedadInmueble.add(propiedadInmueble);
+                listaInmuebles.add(propiedadInmueble);
+            }
+            if (listaInmuebles.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No se encontraron propiedades para el dueño indicado");
+
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble");
+        }
+        return listaInmuebles;
+    }
 }

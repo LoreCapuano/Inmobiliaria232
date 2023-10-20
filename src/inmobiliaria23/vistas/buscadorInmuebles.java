@@ -1,25 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inmobiliaria23.vistas;
 
 import inmobiliaria23.entidades.InternaljFrameImagen;
+import inmobiliaria23.entidades.panelesImagenes;
+import java.awt.Image;
 
 /**
  *
  * @author Administrador
  */
 public class buscadorInmuebles extends InternaljFrameImagen {
-
-    /**
-     * Creates new form buscadorInmuebles
-     */
+    
+    private panelesImagenes pi = new panelesImagenes();
+    
     public buscadorInmuebles() {
         initComponents();
-        this.setSize(700, 400);
-        this.setImage("/inmobiliaria23/recursos/FondoEscritorioFin.jpg");
+        this.setSize(1024, 770);
+        
+        this.setImage("/inmobiliaria23/recursos/FondoNaranja.jpg");
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        
     }
 
     /**
@@ -31,220 +30,225 @@ public class buscadorInmuebles extends InternaljFrameImagen {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        jTextID = new javax.swing.JTextField();
+        Titulo = new javax.swing.JLabel();
+        DatosInquilinos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jTextIdContratoAlq = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jTextIDInmuebleContratoAlq = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        btnBuscarInmuebles = new inmobiliaria23.entidades.BotonVerde();
+        botonAzul1 = new inmobiliaria23.entidades.BotonAzul();
+        DatosInquilinos1 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextFechaIniContratoAlq1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFechaFinContratoAlq1 = new javax.swing.JTextField();
+        DatosInquilinos2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jbSalir = new javax.swing.JButton();
+        jTextIDInquilinoContratoAlq1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextMontoPesosContratoAlq1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(410, 400));
+        jTextID.setBackground(new java.awt.Color(236, 226, 200));
+        jTextID.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextID.setForeground(new java.awt.Color(51, 51, 51));
+        jTextID.setText(" ");
+        jTextID.setBorder(null);
+        jTextID.setPreferredSize(new java.awt.Dimension(165, 30));
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximizable(true);
+        setResizable(true);
+        setPreferredSize(new java.awt.Dimension(700, 400));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Titulo.setFont(new java.awt.Font("Roboto Bk", 0, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(51, 51, 51));
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/seek.png"))); // NOI18N
+        Titulo.setText("Buscador de Inmuebles Disponibles");
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+
+        DatosInquilinos.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        DatosInquilinos.setOpaque(false);
+        DatosInquilinos.setPreferredSize(new java.awt.Dimension(500, 390));
+        DatosInquilinos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel1.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel1.setText("ID:");
+        DatosInquilinos.add(jLabel1);
 
+        jTextIdContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
+        jTextIdContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextIdContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
+        jTextIdContratoAlq.setText(" ");
+        jTextIdContratoAlq.setBorder(null);
+        jTextIdContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextIdContratoAlq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextIdContratoAlqActionPerformed(evt);
+            }
+        });
+        DatosInquilinos.add(jTextIdContratoAlq);
+
+        jLabel2.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel2.setText("Uso de Local:");
+        DatosInquilinos.add(jLabel2);
 
-        jLabel3.setText("Sup. Mínima:");
+        jTextIDInmuebleContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
+        jTextIDInmuebleContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextIDInmuebleContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
+        jTextIDInmuebleContratoAlq.setText(" ");
+        jTextIDInmuebleContratoAlq.setBorder(null);
+        jTextIDInmuebleContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos.add(jTextIDInmuebleContratoAlq);
 
-        jLabel4.setText("Valor Estimado:");
+        getContentPane().add(DatosInquilinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 180, 140));
 
-        jLabel5.setText("Zona:");
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        jLabel6.setText("Otro:");
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/camara.png"))); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
-        jLabel7.setText("Buscador de Inmuebles Disponibles");
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/lupabuscador.png"))); // NOI18N
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/eliminar.png"))); // NOI18N
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/AÑADIR.png"))); // NOI18N
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/limpiar.png"))); // NOI18N
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/imagen.png"))); // NOI18N
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarInmuebles.setBorder(null);
+        btnBuscarInmuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/buscar-interna.png"))); // NOI18N
+        btnBuscarInmuebles.setText("BUSCAR");
+        btnBuscarInmuebles.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        btnBuscarInmuebles.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnBuscarInmuebles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnBuscarInmueblesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBuscarInmuebles);
 
-        jLabel8.setText(":");
-
-        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/cerrar-sesion.png"))); // NOI18N
-        jbSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+        botonAzul1.setBorder(null);
+        botonAzul1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/exits.png"))); // NOI18N
+        botonAzul1.setText(" SALIR");
+        botonAzul1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        botonAzul1.setPreferredSize(new java.awt.Dimension(120, 30));
+        botonAzul1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
+                botonAzul1ActionPerformed(evt);
             }
         });
+        jPanel1.add(botonAzul1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(34, 34, 34)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(126, 126, 126))
-                                .addComponent(jTextField6)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(34, 34, 34))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(4, 4, 4)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4)
-                                .addComponent(jTextField5)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField1))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(57, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 1000, 50));
+
+        DatosInquilinos1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        DatosInquilinos1.setOpaque(false);
+        DatosInquilinos1.setPreferredSize(new java.awt.Dimension(500, 390));
+        DatosInquilinos1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel12.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel12.setText("Zona:");
+        DatosInquilinos1.add(jLabel12);
+
+        jTextFechaIniContratoAlq1.setBackground(new java.awt.Color(236, 226, 200));
+        jTextFechaIniContratoAlq1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextFechaIniContratoAlq1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextFechaIniContratoAlq1.setText(" ");
+        jTextFechaIniContratoAlq1.setBorder(null);
+        jTextFechaIniContratoAlq1.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos1.add(jTextFechaIniContratoAlq1);
+
+        jLabel13.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel13.setText("Otros:");
+        DatosInquilinos1.add(jLabel13);
+
+        jTextFechaFinContratoAlq1.setBackground(new java.awt.Color(236, 226, 200));
+        jTextFechaFinContratoAlq1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextFechaFinContratoAlq1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextFechaFinContratoAlq1.setText(" ");
+        jTextFechaFinContratoAlq1.setBorder(null);
+        jTextFechaFinContratoAlq1.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos1.add(jTextFechaFinContratoAlq1);
+
+        getContentPane().add(DatosInquilinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 180, 140));
+
+        DatosInquilinos2.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        DatosInquilinos2.setOpaque(false);
+        DatosInquilinos2.setPreferredSize(new java.awt.Dimension(500, 390));
+        DatosInquilinos2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel8.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel8.setText("Superficie Mínima:");
+        DatosInquilinos2.add(jLabel8);
+
+        jTextIDInquilinoContratoAlq1.setBackground(new java.awt.Color(236, 226, 200));
+        jTextIDInquilinoContratoAlq1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextIDInquilinoContratoAlq1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextIDInquilinoContratoAlq1.setText(" ");
+        jTextIDInquilinoContratoAlq1.setBorder(null);
+        jTextIDInquilinoContratoAlq1.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos2.add(jTextIDInquilinoContratoAlq1);
+
+        jLabel11.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel11.setText("Valor Estimado:");
+        DatosInquilinos2.add(jLabel11);
+
+        jTextMontoPesosContratoAlq1.setBackground(new java.awt.Color(236, 226, 200));
+        jTextMontoPesosContratoAlq1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextMontoPesosContratoAlq1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextMontoPesosContratoAlq1.setText(" ");
+        jTextMontoPesosContratoAlq1.setBorder(null);
+        jTextMontoPesosContratoAlq1.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos2.add(jTextMontoPesosContratoAlq1);
+
+        getContentPane().add(DatosInquilinos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 180, 140));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel14.setText("Imagen miniatura:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/sinimagen.jpg"))); // NOI18N
+        jPanel2.add(jLabel6);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 340, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jbSalirActionPerformed
+    private void botonAzul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAzul1ActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAzul1ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jTextIdContratoAlqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdContratoAlqActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jTextIdContratoAlqActionPerformed
+
+    private void btnBuscarInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarInmueblesActionPerformed
+        mensajeBuscar buscarInmueble = new mensajeBuscar(null, true);
+        buscarInmueble.setVisible(true);
+    }//GEN-LAST:event_btnBuscarInmueblesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JPanel DatosInquilinos;
+    private javax.swing.JPanel DatosInquilinos1;
+    private javax.swing.JPanel DatosInquilinos2;
+    private javax.swing.JLabel Titulo;
+    private inmobiliaria23.entidades.BotonAzul botonAzul1;
+    private inmobiliaria23.entidades.BotonVerde btnBuscarInmuebles;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JButton jbSalir;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFechaFinContratoAlq1;
+    private javax.swing.JTextField jTextFechaIniContratoAlq1;
+    private javax.swing.JTextField jTextID;
+    private javax.swing.JTextField jTextIDInmuebleContratoAlq;
+    private javax.swing.JTextField jTextIDInquilinoContratoAlq1;
+    private javax.swing.JTextField jTextIdContratoAlq;
+    private javax.swing.JTextField jTextMontoPesosContratoAlq1;
     // End of variables declaration//GEN-END:variables
 }

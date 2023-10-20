@@ -7,6 +7,9 @@ package inmobiliaria23.vistas;
 
 import inmobiliaria23.entidades.panelesImagenes;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,8 +21,10 @@ public class mensajeOKyCancel extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(parent);     
         this.setSize(400, 240);
+    
+        
     }
 
     /**
@@ -67,6 +72,11 @@ public class mensajeOKyCancel extends javax.swing.JDialog {
         botonAzul1.setText("SI");
         botonAzul1.setFont(new java.awt.Font("Roboto Bk", 1, 14)); // NOI18N
         botonAzul1.setPreferredSize(new java.awt.Dimension(120, 30));
+        botonAzul1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAzul1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonAzul1);
 
         botonRojo1.setText("NO");
@@ -82,7 +92,7 @@ public class mensajeOKyCancel extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Roboto Bk", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("¿Estás seguro de guardar cambios?");
+        jLabel2.setText("¿Estás seguro que deseas salir?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +125,10 @@ public class mensajeOKyCancel extends javax.swing.JDialog {
     private void botonRojo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRojo1ActionPerformed
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_botonRojo1ActionPerformed
+
+    private void botonAzul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAzul1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_botonAzul1ActionPerformed
 
     /**
      * @param args the command line arguments

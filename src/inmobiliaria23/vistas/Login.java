@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package inmobiliaria23.vistas;
 
 import java.awt.Color;
@@ -7,18 +11,21 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
+/**
+ *
+ * @author mgandolfo
+ */
 public class Login extends javax.swing.JFrame {
-
+    
     int xMouse, yMouse;
-
+    
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setSize(846, 550);
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,7 +43,6 @@ public class Login extends javax.swing.JFrame {
         citybg2 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         botonRojo1 = new inmobiliaria23.entidades.BotonRojo();
-        jLabelFechaActual = new javax.swing.JLabel();
         botonAzul1 = new inmobiliaria23.entidades.BotonAzul();
         botonRojo2 = new inmobiliaria23.entidades.BotonRojo();
 
@@ -107,8 +113,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        botonRojo1.setBorder(null);
         botonRojo1.setText("X");
         botonRojo1.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        botonRojo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonRojo1.setPreferredSize(new java.awt.Dimension(40, 40));
         botonRojo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,44 +124,40 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabelFechaActual.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
-        jLabelFechaActual.setForeground(new java.awt.Color(153, 153, 153));
-        jLabelFechaActual.setText("Miércoles, 19 de Octubre de 2023");
-
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
                 .addComponent(botonRojo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelFechaActual)
-                .addGap(21, 21, 21))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaActual)
-                    .addComponent(botonRojo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(headerLayout.createSequentialGroup()
+                .addComponent(botonRojo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        botonAzul1.setBorder(null);
         botonAzul1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/btn_entrar.png"))); // NOI18N
         botonAzul1.setText("ENTRAR ");
-        botonAzul1.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        botonAzul1.setFocusable(false);
+        botonAzul1.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         botonAzul1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        botonAzul1.setPreferredSize(new java.awt.Dimension(120, 35));
+        botonAzul1.setPreferredSize(new java.awt.Dimension(110, 30));
         botonAzul1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAzul1ActionPerformed(evt);
             }
         });
 
+        botonRojo2.setBorder(null);
         botonRojo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/LimpiarCampos.png"))); // NOI18N
         botonRojo2.setText("LIMPIAR ");
-        botonRojo2.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        botonRojo2.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         botonRojo2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonRojo2.setPreferredSize(new java.awt.Dimension(110, 30));
         botonRojo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRojo2ActionPerformed(evt);
@@ -175,13 +179,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(passLabel)
                     .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckMostrar)
                     .addGroup(jPanelBackgraundLayout.createSequentialGroup()
-                        .addGroup(jPanelBackgraundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonAzul1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckMostrar))
+                        .addComponent(botonAzul1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(botonRojo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(citybg2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
         );
@@ -210,10 +213,10 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jCheckMostrar))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanelBackgraundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonAzul1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonRojo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelBackgraundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(botonRojo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAzul1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanelBackgraundLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,10 +280,6 @@ public class Login extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
 
-    private void botonRojo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRojo1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_botonRojo1ActionPerformed
-
     private void botonRojo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRojo2ActionPerformed
         userTxt.setText("");
         passTxt.setText("");
@@ -289,24 +288,28 @@ public class Login extends javax.swing.JFrame {
     private void botonAzul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAzul1ActionPerformed
         String Usuario = "admin";
         String Password = "admin";
-
+        
         String convertirPass = String.valueOf(passTxt.getPassword());
         if (userTxt.getText().equals(Usuario) && convertirPass.equals(Password)) {
-
+            
             MenuView principal = new MenuView();
             principal.setUsuarios(userTxt.getText());
             principal.setVisible(true);
             dispose();
-
+            
         } else {
-            mensajeOKyCancel me = new mensajeOKyCancel(this, true);
+            mensajeAdvertencia me = new mensajeAdvertencia(this, true);
             me.setVisible(true);
             userTxt.setText("");
             passTxt.setText("");
-
+            
         }
 
     }//GEN-LAST:event_botonAzul1ActionPerformed
+
+    private void botonRojo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRojo1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_botonRojo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,7 +355,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel favicon;
     private javax.swing.JPanel header;
     private javax.swing.JCheckBox jCheckMostrar;
-    private javax.swing.JLabel jLabelFechaActual;
     private javax.swing.JPanel jPanelBackgraund;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

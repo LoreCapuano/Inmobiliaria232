@@ -15,15 +15,15 @@ import java.awt.Color;
  */
 public class mensajeAdvertencia extends javax.swing.JDialog {
     
-    TituloMensajes ms = new TituloMensajes();
+    
     
 
     public mensajeAdvertencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+         this.setLocationRelativeTo(parent);  
         this.setSize(400, 240);
-        ms.MostrarTituloMensaje();
+    
     }
     
   
@@ -34,7 +34,7 @@ public class mensajeAdvertencia extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        botonRojo1 = new org.netbeans.modules.form.InvalidComponent();
+        botonRojo1 = new inmobiliaria23.entidades.BotonRojo();
         MensajeEmergente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,6 +62,16 @@ public class mensajeAdvertencia extends javax.swing.JDialog {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        botonRojo1.setText("CANCELAR");
+        botonRojo1.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
+        botonRojo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonRojo1.setPreferredSize(new java.awt.Dimension(120, 30));
+        botonRojo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRojo1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -173,7 +183,7 @@ public class mensajeAdvertencia extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MensajeEmergente;
-    private org.netbeans.modules.form.InvalidComponent botonRojo1;
+    private inmobiliaria23.entidades.BotonRojo botonRojo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

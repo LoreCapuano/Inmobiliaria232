@@ -103,6 +103,9 @@
               <Dimension value="[120, 30]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAzul1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="inmobiliaria23.entidades.BotonRojo" name="botonRojo1">
           <Properties>
@@ -129,7 +132,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xbf;Est&#xe1;s seguro de guardar cambios?"/>
+        <Property name="text" type="java.lang.String" value="&#xbf;Est&#xe1;s seguro que deseas salir?"/>
       </Properties>
     </Component>
   </SubComponents>
