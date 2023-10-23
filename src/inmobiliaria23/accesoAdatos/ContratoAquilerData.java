@@ -1,4 +1,3 @@
-
 package inmobiliaria23.accesoAdatos;
 
 import inmobiliaria23.entidades.ContratoAlquiler;
@@ -16,19 +15,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+public class ContratoAquilerData {
 
-public class ContratoAquilerData  {
-    private Connection con=null;
+    private Connection con = null;
     private PropiedadInmuebleData pid = new PropiedadInmuebleData();
     private InquilinoData id = new InquilinoData();
 
     public ContratoAquilerData() {
         con = Conexion.getConexion();
-        
     }
-    
-    public void crearContrato(ContratoAlquiler contrato){
-        String sql = "INSERT INTO contrato_aquiler(FechaInicio, FechaFin, MontoAlquilerPesos, Detalles, Estado, intInmueble, IntInquilino) VALUES (?,?,?,?,?,?,?) ";
+
+    public void crearContrato(ContratoAlquiler contrato) {
+        String sql = "INSERT INTO contrato_aquiler(FechaInicio, FechaFin, MontoAlquilerPesos, Detalles, Estado, IdInmueble, IdInquilino) VALUES (?,?,?,?,?,?,?) ";
 //        
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -41,79 +39,78 @@ public class ContratoAquilerData  {
             ps.setInt(7, contrato.getInquilino().getId_inquilino());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()){
+            if (rs.next()) {
                 contrato.setId_contrato(1);
-                JOptionPane.showMessageDialog(null,"contrato creado correctamente");
-                
+                JOptionPane.showMessageDialog(null, "contrato creado correctamente");
+
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error al generar contrato" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "error al generar contrato" + ex.getMessage());
         }
-        
-        
+
     }
-    public void rescindirContrato(int id){
-        String sql = "UPDATE contrato_aquiler SET Estado = 0 WHERE idContratoAlquiler = ? " ;
-        PreparedStatement ps ;
+
+    public void rescindirContrato(int id) {
+        String sql = "UPDATE contrato_aquiler SET Estado = 0 WHERE idContratoAlquiler = ? ";
+        PreparedStatement ps;
         try {
-            
+
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             int actualizado = ps.executeUpdate();
-            if (actualizado> 0){
+            if (actualizado > 0) {
                 JOptionPane.showMessageDialog(null, "contrato rescindido con el id especificado");
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "no se pudo encontrar contrato con el id especificado");
             }
-            
+
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error al conectar con inmobiliaria23" + ex.getMessage());
-        } 
-       
-        
+        }
+
     }
-     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin  , Double montoNuevo, int id){
-         
-         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ? AND FechaFin < NOW()  " ;
-        PreparedStatement ps ;
+
+    public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin, Double montoNuevo, int id) {
+
+        String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ? AND FechaFin < NOW()  ";
+        PreparedStatement ps;
         try {
-            
+
             ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaInicio));
             ps.setDate(2, Date.valueOf(fechaFin));
-            ps.setDouble(3, montoNuevo );
+            ps.setDouble(3, montoNuevo);
             ps.setInt(4, id);
-            
+
             int actualizado = ps.executeUpdate();
-            if (actualizado> 0){
+            if (actualizado > 0) {
                 JOptionPane.showMessageDialog(null, "contrato RENOVADO");
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "no se pudo encontrar contrato con el id especificado");
             }
-            
+
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error al conectar con inmobiliaria23" + ex.getMessage());
-        } 
-         
-     }
-    public List<ContratoAlquiler> listarContratosVigentes(int estado){
-        String sql = " SELECT * FROM contrato_aquiler WHERE Estado = ?  ";
-        ArrayList<ContratoAlquiler> contratos = new ArrayList<>();        
-        try {                       
+        }
+
+    }
+
+    public List<ContratoAlquiler> listarContratosVigentes(int estado) {
+        String sql = " SELECT * FROM contrato_aquiler WHERE Estado = 1  ";
+        ArrayList<ContratoAlquiler> contratos = new ArrayList<>();
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-              ps.setInt(1, estado);
+            ps.setInt(1, estado);
             ResultSet rs = ps.executeQuery();
-            while ( rs.next()){
+            while (rs.next()) {
                 ContratoAlquiler ca = new ContratoAlquiler();
                 ca.setId_contrato(rs.getInt("idContratoAlquiler"));
-                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IntInquilino"));
+                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IdInquilino"));
                 ca.setInquilino(soloid);
-                PropiedadInmueble idsolo= pid.buscarInmuebleXid(rs.getInt("intInmueble"));
+                PropiedadInmueble idsolo = pid.buscarInmuebleXid(rs.getInt("IdInmueble"));
                 ca.setIdpropiedad(idsolo);
                 ca.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
                 ca.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
@@ -121,18 +118,13 @@ public class ContratoAquilerData  {
                 ca.setDetalles(rs.getString("Detalles"));
                 ca.setEstado(rs.getString("Estado"));
                 contratos.add(ca);
-                
             }
-            
+
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(ContratoAquilerData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return contratos;
     }
-        
-               
-            
-        
-    
+
 }

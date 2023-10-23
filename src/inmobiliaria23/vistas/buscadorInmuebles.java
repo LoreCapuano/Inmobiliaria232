@@ -16,7 +16,7 @@ public class buscadorInmuebles extends InternaljFrameImagen {
         initComponents();
         this.setSize(1024, 770);
         
-        this.setImage("/inmobiliaria23/recursos/FondoNaranja.jpg");
+        this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         
     }
