@@ -35,8 +35,8 @@ public class PropiedadInmueble {
         this.precioTasado = precioTasado;
         this.estado = estado;
     }
-
-    public PropiedadInmueble(Propietario Propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
+//constructor sin id
+    public PropiedadInmueble(Propietario propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
         this.propietario = propietario;
         this.tipoDeLocal = tipoDeLocal;
         this.zona = zona;
@@ -47,6 +47,17 @@ public class PropiedadInmueble {
         this.precioTasado = precioTasado;
         this.estado = estado;
         
+    }
+//constructor sin propietario
+    public PropiedadInmueble(String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
+        this.tipoDeLocal = tipoDeLocal;
+        this.zona = zona;
+        this.direccion = direccion;
+        this.superficie = superficie;
+        this.caracteristicas = caracteristicas;
+        this.accesibilidad = accesibilidad;
+        this.precioTasado = precioTasado;
+        this.estado = estado;
     }
 
     public Propietario getPropietario() {

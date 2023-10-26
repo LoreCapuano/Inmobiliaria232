@@ -22,8 +22,7 @@ public class PropiedadInmuebleData {
         con = Conexion.getConexion();
     }
     private InquilinoData id = new InquilinoData();
-    private PropiedadInmuebleData pid = new PropiedadInmuebleData();
-    
+
     public void altaInmueble(PropiedadInmueble propiedadInmueble) {
         String sql = "insert into inmueble (idPropietario,tipo,zona, direccion,superficie,caracteristicas, accesibilidad,"
                 + "precioBase,estado)values (?,?,?,?,?,?,?,?,?)";
@@ -128,11 +127,11 @@ public class PropiedadInmuebleData {
         }
     }
 
-    public List<PropiedadInmueble> listarInmueblesDisponiblesYsuDueño(Boolean estado) {
+    public List<PropiedadInmueble> listarInmueblesDisponiblesYsuDueño(boolean estado) {
 
         String sql = "SELECT i.idInmueble,i.Tipo, i.zona, i.direccion, i.superficie, i.PrecioBase,i.estado,"
                 + " o.nombre AS nombreDueno, o.apellido AS apellidoDueno, o.idPropietario AS idPropietario "
-                + "FROM Inmueble i INNER JOIN Propietario o ON i.idPropietario = o.idPropietario WHERE i.Estado= ?;";
+                + "FROM Inmueble i INNER JOIN Propietario o ON i.idPropietario = o.idPropietario WHERE i.Estado= ?";
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
 
         try {
@@ -303,36 +302,207 @@ public class PropiedadInmuebleData {
         return listaInmuebles;
     }
 
-    public List<PropiedadInmueble> listarPropiedadesYsusContratos(int idPropiedad) {
-        String sql = "SELECT * FROM inmueble JOIN contrato_aquiler ON "
-                + "(inmueble.idInmueble = contrato_aquiler.idInmueble) JOIN inquilino ON "
-                + "(contrato_aquiler.idInquilino = inquilino.idInquilino) WHERE inmueble.idInmueble =?";
-        ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
-          ArrayList<ContratoAlquiler> contratos = new ArrayList<>();
+    public List<PropiedadInmueble> buscarInmueblesPorTipo(String tipo) {
+        String sql = "SELECT * FROM inmueble WHERE Tipo=?";
+        List<PropiedadInmueble> propiedades = new ArrayList<>();
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idPropiedad);
+            ps.setString(1, tipo);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                
-                ContratoAlquiler ca = new ContratoAlquiler();
-                ca.setId_contrato(rs.getInt("idContratoAlquiler"));
-                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IdInquilino"));
-                ca.setInquilino(soloid);
-                PropiedadInmueble idsolo = pid.buscarInmuebleXid(rs.getInt("IdInmueble"));
-                ca.setIdpropiedad(idsolo);
-                ca.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
-                ca.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
-                ca.setMontoAlquilerPesos(rs.getDouble("MontoAlquilerPesos"));
-                ca.setDetalles(rs.getString("Detalles"));
-                ca.setEstado(rs.getString("Estado"));
-                listaInmuebles.add(contrato);
+                PropiedadInmueble propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+                propiedades.add(propiedad);
+            }
+
+            if (propiedades.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No existen propiedades con ese tipo");
             }
 
             ps.close();
+
         } catch (SQLException ex) {
-            Logger.getLogger(ContratoAquilerData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
-        return listaInmuebles;
+
+        return propiedades;
     }
+    
+    public List<PropiedadInmueble> buscarInmueblesPorZona(String zona) {
+        String sql = "SELECT * FROM inmueble WHERE Zona=?";
+        List<PropiedadInmueble> propiedades = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, zona);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PropiedadInmueble propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+                propiedades.add(propiedad);
+            }
+
+            if (propiedades.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No existen propiedades con ese tipo");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
+        }
+
+        return propiedades;
+    }
+    
+    public List<PropiedadInmueble> buscarInmueblesPorSuperficie(int superficie) {
+        String sql = "SELECT * FROM inmueble WHERE Superficie=?";
+        List<PropiedadInmueble> propiedades = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, superficie);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PropiedadInmueble propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+                propiedades.add(propiedad);
+            }
+
+            if (propiedades.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No existen propiedades con ese tipo");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
+        }
+
+        return propiedades;
+    }
+
+        
+
+//Buscar por varios criterios a la vez, segun lo prefieras
+    public PropiedadInmueble buscarInmueblePorCriterios(String tipo, String zona, int superficie, float precioBase) {
+        String sql = "SELECT * FROM inmueble WHERE Tipo = ? AND Zona = ? AND Superficie = ? AND PrecioBase = ?";
+        PropiedadInmueble propiedad = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tipo);
+            ps.setString(2, zona);
+            ps.setInt(3, superficie);
+            ps.setFloat(4, precioBase);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro una propiedad inmueble con los criterios especificados.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble: " + ex.getMessage());
+        }
+        return propiedad;
+    }
+public List<PropiedadInmueble> listarInmueblesPorCriterios(String tipo, String zona, int superficie, float precioBase, int idpropietario) {
+        String sql = "SELECT * FROM inmueble WHERE Tipo = ? AND Zona = ? AND Superficie = ? AND PrecioBase = ? AND idPropietario =?";
+        List<PropiedadInmueble> propiedadesEncontradas = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tipo);
+            ps.setString(2, zona);
+            ps.setInt(3, superficie);
+            ps.setFloat(4, precioBase);
+            ps.setInt(5, idpropietario);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PropiedadInmueble propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+                //propiedad.setPropietario(rs.getInt("idPropietario"));
+                propiedadesEncontradas.add(propiedad);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble: " + ex.getMessage());
+        }
+        return propiedadesEncontradas;
+    }
+
+
+    
+   public List<PropiedadInmueble> listarInmueblesPorPrecioBaseEnRango(float precioMin, float precioMax) {
+        String sql = "SELECT * FROM inmueble WHERE PrecioBase BETWEEN ? AND ?";
+        List<PropiedadInmueble> propiedadesEncontradas = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setFloat(1, precioMin);
+            ps.setFloat(2, precioMax);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PropiedadInmueble propiedad = new PropiedadInmueble();
+                propiedad.setIdInmueble(rs.getInt("idInmueble"));
+                propiedad.setTipoDeLocal(rs.getString("Tipo"));
+                propiedad.setZona(rs.getString("Zona"));
+                propiedad.setDireccion(rs.getString("Direccion"));
+                propiedad.setSuperficie(rs.getInt("Superficie"));
+                propiedad.setCaracteristicas(rs.getString("Caracteristicas"));
+                propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
+                propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
+                propiedad.setEstado(rs.getBoolean("Estado"));
+                propiedadesEncontradas.add(propiedad);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble: " + ex.getMessage());
+        }
+        return propiedadesEncontradas;
+    }
+
 }
