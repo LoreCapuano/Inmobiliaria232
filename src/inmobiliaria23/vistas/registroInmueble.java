@@ -116,7 +116,6 @@ public class registroInmueble extends InternaljFrameImagen {
         jLabel1.setText("ID:");
         DatosInquilinos.add(jLabel1);
 
-        jTextId.setEditable(false);
         jTextId.setBackground(new java.awt.Color(236, 226, 200));
         jTextId.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jTextId.setForeground(new java.awt.Color(51, 51, 51));
@@ -208,6 +207,11 @@ public class registroInmueble extends InternaljFrameImagen {
         jbModificar.setText(" MODIFICAR");
         jbModificar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbModificar.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jbModificar);
 
         jbLimpiar1.setBorder(null);
@@ -227,6 +231,11 @@ public class registroInmueble extends InternaljFrameImagen {
         jbBuscar.setText(" BUSCAR");
         jbBuscar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbBuscar.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jbBuscar);
 
         jbEliminar.setBorder(null);
@@ -444,6 +453,83 @@ public class registroInmueble extends InternaljFrameImagen {
         jCBestado.setSelected(false);
 
     }//GEN-LAST:event_jbLimpiar1ActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+       
+    try {
+        int idPropietario = Integer.parseInt(jTextPropietario.getText());
+        PropietarioData propData = new PropietarioData();
+        Propietario propietario = propData.buscarPropietarioPorId(idPropietario);
+
+        if (propiedadActual == null) {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado una propiedad para modificar.");
+            return;
+        }
+
+        propiedadActual.setPropietario(propietario);
+        propiedadActual.setTipoDeLocal((String) jComboBoxTipo.getSelectedItem());
+        propiedadActual.setZona(jTextZona.getText());
+        propiedadActual.setDireccion(jTextDireccion.getText());
+        propiedadActual.setSuperficie(Integer.parseInt(jTextSuperficie.getText()));
+        propiedadActual.setCaracteristicas(jTextAreaCaracteristicas.getText());
+        propiedadActual.setAccesibilidad(jTextAccesibilidad.getText());
+        propiedadActual.setPrecioTasado(Integer.parseInt(jTextPrecioBase.getText()));
+        propiedadActual.setEstado(jCBestado.isSelected());
+
+        if (jTextPropietario.getText().isEmpty()
+                || ((String) jComboBoxTipo.getSelectedItem()).equalsIgnoreCase("Seleccionar")
+                || jTextZona.getText().isEmpty()
+                || jTextDireccion.getText().isEmpty()
+                || jTextSuperficie.getText().isEmpty()
+                || jTextAreaCaracteristicas.getText().isEmpty()
+                || jTextAccesibilidad.getText().isEmpty()
+                || jTextPrecioBase.getText().isEmpty()
+                || jCBestado.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+        } else if (!validarCampoNumerico(jTextPropietario)
+                || !validarCampoNumerico(jTextSuperficie)
+                || !validarCampoNumerico(jTextPrecioBase)) {
+            // Validación de campos numéricos
+        } else {
+            inmuData.modificarInmueble(propiedadActual);
+            limpiarCampos();
+            JOptionPane.showMessageDialog(this, "Propiedad modificada exitosamente.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Error en la conversión de datos numéricos.");
+    }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+       try {
+
+            Integer ID = Integer.parseInt(jTextId.getText().trim());
+            propiedadActual = inmuData.buscarInmuebleXid(ID);
+
+            if (propiedadActual != null) {
+                jTextPropietario.setText(String.valueOf (propiedadActual.getPropietario().getId_propietario()));
+                jComboBoxTipo.setSelectedItem((String)propiedadActual.getTipoDeLocal());
+                jTextZona.setText(propiedadActual.getZona());
+                jTextDireccion.setText(propiedadActual.getDireccion());
+                jTextSuperficie.setText(String.valueOf(propiedadActual.getSuperficie()));
+                jTextAreaCaracteristicas.setText(propiedadActual.getCaracteristicas());
+                jTextAccesibilidad.setText(propiedadActual.getAccesibilidad());
+                jTextPrecioBase.setText(String.valueOf(propiedadActual.getPrecioTasado()));
+                if (jCBestado.isSelected()) {
+                    jTextDisponibilidad.setText("ACTIVO");
+                    } else {
+                    jTextDisponibilidad.setText ("INACTIVO");
+                   
+                }
+            }
+            /*else {
+                JOptionPane.showMessageDialog(null, "No existe un inquilino con ese ID");
+            }*/
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de ID valido");
+        }
+                                     
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
