@@ -102,6 +102,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextId">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c8" green="e2" red="ec" type="rgb"/>
             </Property>
@@ -317,9 +318,6 @@
               <Dimension value="[120, 30]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbModificarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="inmobiliaria23.entidades.BotonNegro" name="jbLimpiar1">
           <Properties>
@@ -357,9 +355,6 @@
               <Dimension value="[120, 30]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="inmobiliaria23.entidades.BotonRojo" name="jbEliminar">
           <Properties>

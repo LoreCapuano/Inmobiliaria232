@@ -72,10 +72,17 @@ public class ContratoAquilerData {
 
     }
 
+     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin  , Double montoNuevo, int id){
+         //AND FechaFin < NOW()
+         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ?   " ;
+        PreparedStatement ps ;
+
+
     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin, Double montoNuevo, int id) {
 
         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ? AND FechaFin < NOW()  ";
         PreparedStatement ps;
+
         try {
 
             ps = con.prepareStatement(sql);
@@ -127,4 +134,42 @@ public class ContratoAquilerData {
         return contratos;
     }
 
+        
+       public  ContratoAlquiler  buscarcontratoporid (int idbuscador){
+           String qsl = " SELECT * FROM contrato_aquiler WHERE idContratoAlquiler = ? ;";
+           ContratoAlquiler ca= null;
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(qsl);
+            ps.setInt(1, idbuscador);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                 ca = new ContratoAlquiler();
+                ca.setId_contrato(rs.getInt("idContratoAlquiler"));
+                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IntInquilino"));
+                ca.setInquilino(soloid);
+                PropiedadInmueble idsolo= pid.buscarInmuebleXid(rs.getInt("intInmueble"));
+                ca.setIdpropiedad(idsolo);
+                ca.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
+                ca.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
+                ca.setMontoAlquilerPesos(rs.getDouble("MontoAlquilerPesos"));
+                ca.setDetalles(rs.getString("Detalles"));
+                ca.setEstado(rs.getString("Estado"));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "no hay contratos con ese id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ContratoAquilerData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+           return ca;
+       }        
+            
+       
+    
 }
+
+
+}
+

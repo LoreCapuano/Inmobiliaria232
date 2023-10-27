@@ -31,7 +31,11 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         initComponents();
         modelo = new DefaultTableModel();
         this.setSize(1024, 768);
+
+        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
+
         this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
+
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
 
         armarCabecera();

@@ -245,7 +245,11 @@ public class Inmobiliaria23 {
 //        if (!listaContratos.isEmpty()){
 //            for(ContratoAlquiler iterador:listaContratos  ){
 //                System.out.println("id contrato alquiler: "+ iterador.getId_contrato());
+
+//                System.out.println("id inquilino: "+ iterador.getInquilino().getId_inquilino());
+
 //                System.out.println("id inquilino: "+ iterador.getInquilino());
+
 //                System.out.println("id propiedad: "+ iterador.getIdpropiedad().getIdInmueble());
 //                System.out.println("fecha de inicio: "+ iterador.getFechaInicio());
 //                System.out.println("fecha vencimiento: "+ iterador.getFechaFinal());
@@ -260,6 +264,13 @@ public class Inmobiliaria23 {
 //        else {
 //            System.out.println("no existen contratos vigentes");
 //        }
+
+    ContratoAquilerData  nueva = new ContratoAquilerData();
+    ContratoAlquiler ca = nueva.buscarcontratoporid(1);
+        System.out.println("detalle" + ca.getDetalles());
+    
+    }}
+
 //BUSCAR POR CRITERIOS MULTIPLES
 //        PropiedadInmuebleData inmuebleData = new PropiedadInmuebleData();
 //        PropiedadInmueble inmuebleEncontrado = inmuebleData.buscarInmueblePorCriterios("Casa", "Zona A", 200, 150000);
@@ -311,4 +322,11 @@ public class Inmobiliaria23 {
 //            }
 //        }
 //    }
+
+
+
+            }
+        }
+    }
+}
 

@@ -258,8 +258,8 @@ public class PropiedadInmuebleData {
                 propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
                 propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
                 propiedad.setEstado(rs.getBoolean("Estado"));
-
-            } else {
+            }
+             else {
                 JOptionPane.showMessageDialog(null, "No existe un Inmueble con ese Id");
             }
             ps.close();
