@@ -7,9 +7,14 @@ import inmobiliaria23.entidades.panelesImagenes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -19,21 +24,21 @@ public class registroPropietario extends InternaljFrameImagen {
     
     private panelesImagenes pi = new panelesImagenes();
     
-    private DefaultTableModel modelo;
-    public boolean isCellEditable(int f, int c){
-        return false;
-    }
+   private DefaultTableModel modelo = new DefaultTableModel();
+//    public boolean isCellEditable(int f, int c){
+     //  return false;
+    
     
     public registroPropietario() {
         initComponents();
         this.setSize(1024, 770);
         
         this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
-//        jTablePropietario.getTableHeader().setFont(new Font("Roboto CD", Font.BOLD, 12));
-//        jTablePropietario.getTableHeader().setOpaque(false);
-//        jTablePropietario.getTableHeader().setBackground(new Color(32, 136, 203));
-//        jTablePropietario.getTableHeader().setForeground(new Color(255, 255, 255));
-//        jTablePropietario.setRowHeight(25);
+        jTablePropietario.getTableHeader().setFont(new Font("Roboto CD", Font.BOLD, 12));
+        jTablePropietario.getTableHeader().setOpaque(false);
+        jTablePropietario.getTableHeader().setBackground(new Color(32, 136, 203));
+        jTablePropietario.getTableHeader().setForeground(new Color(255, 255, 255));
+        jTablePropietario.setRowHeight(25);
         
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         armarCabecera();
@@ -41,7 +46,7 @@ public class registroPropietario extends InternaljFrameImagen {
     }
 
     // Método para cargar datos de propietario a la jtPropietario
-    private PropietarioData propietaData = new PropietarioData();
+    //private PropietarioData propietaData = new PropietarioData();
     private Propietario propietarioActual = null;
 
         
@@ -122,11 +127,6 @@ public class registroPropietario extends InternaljFrameImagen {
         jTextIdPro.setText(" ");
         jTextIdPro.setBorder(null);
         jTextIdPro.setPreferredSize(new java.awt.Dimension(165, 30));
-        jTextIdPro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextIdProActionPerformed(evt);
-            }
-        });
         DatosInquilinos.add(jTextIdPro);
 
         jLabel2.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -176,13 +176,10 @@ public class registroPropietario extends InternaljFrameImagen {
 
         jTablePropietario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+
             }
         ));
         jTablePropietario.setIntercellSpacing(new java.awt.Dimension(0, 0));
@@ -204,11 +201,6 @@ public class registroPropietario extends InternaljFrameImagen {
         jbNuevo.setText(" NUEVO");
         jbNuevo.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbNuevo.setPreferredSize(new java.awt.Dimension(120, 30));
-        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoActionPerformed(evt);
-            }
-        });
         jPanel1.add(jbNuevo);
 
         jbModificar.setBorder(null);
@@ -223,11 +215,6 @@ public class registroPropietario extends InternaljFrameImagen {
         jbLimpiar.setText(" LIMPIAR");
         jbLimpiar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbLimpiar.setPreferredSize(new java.awt.Dimension(120, 30));
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
-            }
-        });
         jPanel1.add(jbLimpiar);
 
         jbBuscar.setBorder(null);
@@ -235,11 +222,6 @@ public class registroPropietario extends InternaljFrameImagen {
         jbBuscar.setText(" BUSCAR");
         jbBuscar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbBuscar.setPreferredSize(new java.awt.Dimension(120, 30));
-        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbBuscarActionPerformed(evt);
-            }
-        });
         jPanel1.add(jbBuscar);
 
         jbEliminar.setBorder(null);
@@ -247,11 +229,6 @@ public class registroPropietario extends InternaljFrameImagen {
         jbEliminar.setText("ELIMINAR");
         jbEliminar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbEliminar.setPreferredSize(new java.awt.Dimension(120, 30));
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
-            }
-        });
         jPanel1.add(jbEliminar);
 
         jbGuardar.setBorder(null);
@@ -298,22 +275,12 @@ public class registroPropietario extends InternaljFrameImagen {
         jButtonBuscarXdni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/vistas/LupaInmobiliaria.png"))); // NOI18N
         jButtonBuscarXdni.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonBuscarXdni.setPreferredSize(new java.awt.Dimension(30, 30));
-        jButtonBuscarXdni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarXdniActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonBuscarXdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 40, 40));
 
         jButtonBuscarXid1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jButtonBuscarXid1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/vistas/LupaInmobiliaria.png"))); // NOI18N
         jButtonBuscarXid1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonBuscarXid1.setPreferredSize(new java.awt.Dimension(30, 30));
-        jButtonBuscarXid1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarXid1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonBuscarXid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 40, 40));
 
         jLabel6.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -348,103 +315,17 @@ public class registroPropietario extends InternaljFrameImagen {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbNuevoActionPerformed
-
-    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        
-
-    }//GEN-LAST:event_jbBuscarActionPerformed
-
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        
+      
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
-    }//GEN-LAST:event_jbEliminarActionPerformed
-
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        jTextIdPro.setText("");
-        jTextDniPro.setText("");
-        jTextCuitPro.setText("");
-        jTextNombreApellidoPro.setText("");
-        jTextTelefonosPro.setText("");
-
-    }//GEN-LAST:event_jbLimpiarActionPerformed
-
-    private void jTextIdProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdProActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextIdProActionPerformed
-
     private void btnInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInmueblesActionPerformed
-        RegistrarInmueble RInmueble = new RegistrarInmueble();
-        RInmueble.setVisible(true);
+//        RegistrarInmueble RInmueble = new RegistrarInmueble();
+//        RInmueble.setVisible(true);
         
 
     }//GEN-LAST:event_btnInmueblesActionPerformed
-////
-    private void jButtonBuscarXdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarXdniActionPerformed
-        try {
-
-            Integer ID = Integer.parseInt(jTextId.getText().trim());
-            inquilinoActual = inquiData.buscarInquilinoPorid(ID);
-
-            if (inquilinoActual != null) {
-                jTextApellido.setText(inquilinoActual.getApellido());
-                jTextNombre.setText(inquilinoActual.getNombre());
-                jTextDni.setText(String.valueOf(inquilinoActual.getDni()));
-                jTextCuit.setText(inquilinoActual.getCUIL());
-                jTextTelefonos.setText(String.valueOf(inquilinoActual.getTel()));
-                jTextLugarTrabajo.setText(inquilinoActual.getLugarDetrabajo());
-                jTextAreaGarantes.setText(inquilinoActual.getGarante());
-                if (inquilinoActual.isEstado()) {
-                    jCBestado.setSelected(true);
-                    jLabelEstado.setText("Activo");
-                } else {
-                    jCBestado.setSelected(false);
-                    jLabelEstado.setText("Inactivo");
-                }
-            }
-            /*else {
-                JOptionPane.showMessageDialog(null, "No existe un inquilino con ese ID");
-            }*/
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de ID valido");
-        }
-    }//GEN-LAST:event_jButtonBuscarXdniActionPerformed
-
-    private void jButtonBuscarXid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarXid1ActionPerformed
-        try {
-
-            Integer ID = Integer.parseInt(jTextId.getText().trim());
-            inquilinoActual = inquiData.buscarInquilinoPorid(ID);
-
-            if (inquilinoActual != null) {
-                jTextApellido.setText(inquilinoActual.getApellido());
-                jTextNombre.setText(inquilinoActual.getNombre());
-                jTextDni.setText(String.valueOf(inquilinoActual.getDni()));
-                jTextCuit.setText(inquilinoActual.getCUIL());
-                jTextTelefonos.setText(String.valueOf(inquilinoActual.getTel()));
-                jTextLugarTrabajo.setText(inquilinoActual.getLugarDetrabajo());
-                jTextAreaGarantes.setText(inquilinoActual.getGarante());
-                if (inquilinoActual.isEstado()) {
-                    jCBestado.setSelected(true);
-                    jLabelEstado.setText("Activo");
-                } else {
-                    jCBestado.setSelected(false);
-                    jLabelEstado.setText("Inactivo");
-                }
-            }
-            /*else {
-                JOptionPane.showMessageDialog(null, "No existe un inquilino con ese ID");
-            }*/
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de ID valido");
-        }
-    }//GEN-LAST:event_jButtonBuscarXid1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -486,12 +367,16 @@ public class registroPropietario extends InternaljFrameImagen {
 
     private void cargarListaPropietarios() {
         PropietarioData propietaData = new PropietarioData();
-        List<Propietario> milista = propietaData.listarPropietarios();
-        for (Propietario propietario : milista) {
+        ArrayList<Propietario> milista = propietaData.listarPropietarios();
+        if (!milista.isEmpty()){
+             JOptionPane.showMessageDialog(null, "Lista llena");
+        }else
+            JOptionPane.showMessageDialog(null, "Lista vacia");
+        for(Propietario propietario : milista) {
             modelo.addRow(new Object[]{
                 propietario.getId_propietario(),
-                propietario.getNombre(),
                 propietario.getApellido(),
+                propietario.getNombre(),
                 propietario.getDni(),
                 propietario.getTel(),
                 propietario.getDomicilio(),
@@ -500,31 +385,32 @@ public class registroPropietario extends InternaljFrameImagen {
     }
 private void armarCabecera() {
         modelo.addColumn("ID");
-        modelo.addColumn("Dni");
-        modelo.addColumn("Cuit");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Domicilio Real");
+        modelo.addColumn("Dni");
         modelo.addColumn("Telefono");
+        modelo.addColumn("Domicilio");
         modelo.addColumn("Estado");
-        jtPropietario.setModel(modelo);
-        JTableHeader tableHeader = jtPropietario.getTableHeader();
+            
+        JTableHeader tableHeader = jTablePropietario.getTableHeader();
         DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) tableHeader.getDefaultRenderer();
         headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         Font headerFont = new Font("Roboto Cn", Font.BOLD, 12);
         headerRenderer.setFont(headerFont);
+        jTablePropietario.setModel(modelo); 
+       
     }
 
-private void borrarDatos() {
-
-        int f = jtPropietario.getRowCount() - 1; //obtengo total de filas de la tabla
-
-        for (; f >= 0; f--) { //recorro filas para borrar 1 por 1 en iteracion.
-
-            modelo.removeRow(f);// remuevo valor por indice en la tabla "jcTable"
-        }
-    }
-    
+//private void borrarDatos() {
+//
+//        int f = jtPropietario.getRowCount() - 1; //obtengo total de filas de la tabla
+//
+//        for (; f >= 0; f--) { //recorro filas para borrar 1 por 1 en iteracion.
+//
+//            modelo.removeRow(f);// remuevo valor por indice en la tabla "jcTable"
+//        }
+//    }
+//    
 }
 
 

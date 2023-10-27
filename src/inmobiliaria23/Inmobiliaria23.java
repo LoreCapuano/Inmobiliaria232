@@ -106,24 +106,24 @@ public class Inmobiliaria23 {
 //            System.out.println("No se encontro ningun propietario con ese dni");
 //        }
 //LISTAR PROPIETARIOS
-//        try {
-//            PropietarioData proData = new PropietarioData();
-//            List<Propietario> milista = proData.listarPropietarios();//<una lista de tipo>nombre de la lista
-//            if (!milista.isEmpty()) {
-//                for (Propietario propietario : milista) {
-//                    System.out.println("id " + propietario.getId_propietario());
-//                    System.out.println("Apellido: " + propietario.getApellido());
-//                    System.out.println("Nombre: " + propietario.getNombre());
-//
-//                    System.out.println("-------------------");
-//                }
-//            } else {
-//                System.out.println("No existen propiedades disponibles");
-//            }
-//        } catch (NullPointerException npe) {
-//            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
-//        }
-//    }   }
+        try {
+            PropietarioData proData = new PropietarioData();
+            List<Propietario> milista = proData.listarPropietarios();//<una lista de tipo>nombre de la lista
+            if (!milista.isEmpty()) {
+                for (Propietario propietario : milista) {
+                    System.out.println("id " + propietario.getId_propietario());
+                    System.out.println("Apellido: " + propietario.getApellido());
+                    System.out.println("Nombre: " + propietario.getNombre());
+
+                    System.out.println("-------------------");
+                }
+            } else {
+                System.out.println("No existen propiedades disponibles");
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
+        }
+    }   }
 //*****************************************************************************
 //PROPIEDAD INMUEBLE DATA
 //ALTA INMUEBLE
@@ -261,12 +261,12 @@ public class Inmobiliaria23 {
 //            System.out.println("no existen contratos vigentes");
 //        }
 //BUSCAR POR CRITERIOS MULTIPLES
-        PropiedadInmuebleData inmuebleData = new PropiedadInmuebleData();
-        PropiedadInmueble inmuebleEncontrado = inmuebleData.buscarInmueblePorCriterios("Casa", "Zona A", 200, 150000);
-        if (inmuebleEncontrado != null) {
-            System.out.println("ID: " + inmuebleEncontrado.getIdInmueble() + "\n Tipo Local: " + inmuebleEncontrado.getTipoDeLocal() + "\n Zona: " + inmuebleEncontrado.getZona() + "\n Superficie: " + inmuebleEncontrado.getSuperficie() + "\n Precio Base: " + inmuebleEncontrado.getPrecioTasado());
-        } else {
-            System.out.println("No se encontró el criterio deseado");
+//        PropiedadInmuebleData inmuebleData = new PropiedadInmuebleData();
+//        PropiedadInmueble inmuebleEncontrado = inmuebleData.buscarInmueblePorCriterios("Casa", "Zona A", 200, 150000);
+//        if (inmuebleEncontrado != null) {
+//            System.out.println("ID: " + inmuebleEncontrado.getIdInmueble() + "\n Tipo Local: " + inmuebleEncontrado.getTipoDeLocal() + "\n Zona: " + inmuebleEncontrado.getZona() + "\n Superficie: " + inmuebleEncontrado.getSuperficie() + "\n Precio Base: " + inmuebleEncontrado.getPrecioTasado());
+//        } else {
+//            System.out.println("No se encontró el criterio deseado");
 
 //LISTAR POR CRITERIO
 //            try {
@@ -297,18 +297,18 @@ public class Inmobiliaria23 {
 //            System.out.println("No se encontró el criterio deseado");
 //    
 //LISTAR POR PRECIO BASE EN RANGO
-            PropiedadInmuebleData PrecioBase = new PropiedadInmuebleData();
-            List<PropiedadInmueble> ListarPrecio = PrecioBase.listarInmueblesPorPrecioBaseEnRango(10000, 90000);
-            if (!ListarPrecio.isEmpty()) {
-                for (PropiedadInmueble propiedadinmueble : ListarPrecio) {
-                    System.out.println("\nZona: " + propiedadinmueble.getZona() + 
-                            "\nPrecio Base: " + propiedadinmueble.getPrecioTasado() + 
-                            "\nDireccion: " + propiedadinmueble.getDireccion()
-                            + "\nTipo Local: " + propiedadinmueble.getTipoDeLocal());
-                    System.out.println("--------------------------------------");
-                }
+//            PropiedadInmuebleData PrecioBase = new PropiedadInmuebleData();
+//            List<PropiedadInmueble> ListarPrecio = PrecioBase.listarInmueblesPorPrecioBaseEnRango(10000, 90000);
+//            if (!ListarPrecio.isEmpty()) {
+//                for (PropiedadInmueble propiedadinmueble : ListarPrecio) {
+//                    System.out.println("\nZona: " + propiedadinmueble.getZona() + 
+//                            "\nPrecio Base: " + propiedadinmueble.getPrecioTasado() + 
+//                            "\nDireccion: " + propiedadinmueble.getDireccion()
+//                            + "\nTipo Local: " + propiedadinmueble.getTipoDeLocal());
+//                    System.out.println("--------------------------------------");
+//                }
+//
+//            }
+//        }
+//    }
 
-            }
-        }
-    }
-}
