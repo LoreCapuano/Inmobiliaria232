@@ -72,12 +72,7 @@ public class ContratoAquilerData {
 
     }
 
-     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin  , Double montoNuevo, int id){
-         //AND FechaFin < NOW()
-         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ?   " ;
-        PreparedStatement ps ;
-
-
+     
     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin, Double montoNuevo, int id) {
 
         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ? AND FechaFin < NOW()  ";
@@ -171,5 +166,5 @@ public class ContratoAquilerData {
 }
 
 
-}
+
 

@@ -258,8 +258,7 @@ public class PropiedadInmuebleData {
                 propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
                 propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
                 propiedad.setEstado(rs.getBoolean("Estado"));
-            }
-             else {
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe un Inmueble con ese Id");
             }
             ps.close();
@@ -336,7 +335,7 @@ public class PropiedadInmuebleData {
 
         return propiedades;
     }
-    
+
     public List<PropiedadInmueble> buscarInmueblesPorZona(String zona) {
         String sql = "SELECT * FROM inmueble WHERE Zona=?";
         List<PropiedadInmueble> propiedades = new ArrayList<>();
@@ -371,7 +370,7 @@ public class PropiedadInmuebleData {
 
         return propiedades;
     }
-    
+
     public List<PropiedadInmueble> buscarInmueblesPorSuperficie(int superficie) {
         String sql = "SELECT * FROM inmueble WHERE Superficie=?";
         List<PropiedadInmueble> propiedades = new ArrayList<>();
@@ -407,8 +406,6 @@ public class PropiedadInmuebleData {
         return propiedades;
     }
 
-        
-
 //Buscar por varios criterios a la vez, segun lo prefieras
     public PropiedadInmueble buscarInmueblePorCriterios(String tipo, String zona, int superficie, float precioBase) {
         String sql = "SELECT * FROM inmueble WHERE Tipo = ? AND Zona = ? AND Superficie = ? AND PrecioBase = ?";
@@ -441,7 +438,8 @@ public class PropiedadInmuebleData {
         }
         return propiedad;
     }
-public List<PropiedadInmueble> listarInmueblesPorCriterios(String tipo, String zona, int superficie, float precioBase, int idpropietario) {
+
+    public List<PropiedadInmueble> listarInmueblesPorCriterios(String tipo, String zona, int superficie, float precioBase, int idpropietario) {
         String sql = "SELECT * FROM inmueble WHERE Tipo = ? AND Zona = ? AND Superficie = ? AND PrecioBase = ? AND idPropietario =?";
         List<PropiedadInmueble> propiedadesEncontradas = new ArrayList<>();
 
@@ -474,9 +472,7 @@ public List<PropiedadInmueble> listarInmueblesPorCriterios(String tipo, String z
         return propiedadesEncontradas;
     }
 
-
-    
-   public List<PropiedadInmueble> listarInmueblesPorPrecioBaseEnRango(float precioMin, float precioMax) {
+    public List<PropiedadInmueble> listarInmueblesPorPrecioBaseEnRango(float precioMin, float precioMax) {
         String sql = "SELECT * FROM inmueble WHERE PrecioBase BETWEEN ? AND ?";
         List<PropiedadInmueble> propiedadesEncontradas = new ArrayList<>();
 

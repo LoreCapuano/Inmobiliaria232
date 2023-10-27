@@ -1,39 +1,19 @@
 package inmobiliaria23.vistas;
 
-import inmobiliaria23.accesoAdatos.PropiedadInmuebleData;
 import inmobiliaria23.entidades.InternaljFrameImagen;
-import inmobiliaria23.entidades.PropiedadInmueble;
 import inmobiliaria23.entidades.panelesImagenes;
 import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
 
-
+/**
+ *
+ * @author Administrador
+ */
 public class buscadorInmuebles extends InternaljFrameImagen {
     
     private panelesImagenes pi = new panelesImagenes();
-    private PropiedadInmueble al = new PropiedadInmueble();
-    private PropiedadInmuebleData PropieData = new PropiedadInmuebleData();
-    private List<inmobiliaria23.entidades.PropiedadInmueble> ListarInmuebles = new ArrayList<>();
-
-    private DefaultTableModel modelo = new DefaultTableModel() {
-        public boolean isCellEditable(int fila, int col) {
-
-            return false;
-
-        }
-    };
+    
     public buscadorInmuebles() {
         initComponents();
-        PropieData = new PropiedadInmuebleData();
-        ListarInmuebles = PropieData.listarInmuebles();
-        modelo = new DefaultTableModel();
-        //insData = new InscripcionData();
-
-        cargarComboTipo();
-        armarCabecera();
-        
         this.setSize(1024, 770);
         
 
@@ -275,71 +255,4 @@ public class buscadorInmuebles extends InternaljFrameImagen {
     private javax.swing.JTextField jTextIdContratoAlq;
     private javax.swing.JTextField jTextMontoPesosContratoAlq1;
     // End of variables declaration//GEN-END:variables
-public void cargarComboTipo() {
-        jComboBoxTipo.removeAllItems(); // Elimina todos los elementos existentes en el JComboBox
-
-        Set<String> tipos = new TreeSet<>(); // Utiliza un TreeSet para mantenerlos en orden alfabético
-
-        for (PropiedadInmueble item : ListarInmuebles) {
-            String tipo = item.getTipoDeLocal();
-            tipos.add(tipo); // Agrega el tipo al conjunto
-            tipoToPropiedadInmueble.put(tipo, item); // Asocia el tipo con el objeto PropiedadInmueble
-        }
-
-        for (String tipo : tipos) {
-            jComboBoxTipo.addItem(tipo); // Agrega los tipos al JComboBox en orden alfabético
-        }
-
-        jComboBoxTipo.setSelectedIndex(-1);
-    }
-
-    /*public void cargarComboTipo(){
-        for (Tipo tipo: Tipo.values()){
-            jComboBoxTipo.addItem(tipo.name());
-            
-        }
-    }*/
-    private void armarCabecera() {
-        modelo.addColumn("Tipo Local");
-        modelo.addColumn("Dirección");
-        modelo.addColumn("Zona");
-        modelo.addColumn("Superficie");
-        modelo.addColumn("Precio base");
-        modelo.addColumn("Características");
-        modelo.addColumn("Accesibilidad");
-        jTableListadoInmuebles.setModel(modelo);
-        JTableHeader tableHeader = jTableListadoInmuebles.getTableHeader();
-        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) tableHeader.getDefaultRenderer();
-        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-    }
-
-    private void borrarFilaTabla() {
-        int indice = modelo.getRowCount() - 1;
-
-        for (int i = indice; i >= 0; i--) {
-            modelo.removeRow(i);
-
-        }
-    }
-
-    
-    private void cargarTipo() {
-        
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-
-        String tipoSeleccionado = (String) jComboBoxTipo.getSelectedItem();
-        PropiedadInmueble selecc = tipoToPropiedadInmueble.get(tipoSeleccionado);
-
-        if (selecc != null) {
-            List<PropiedadInmueble> ListaTipo = PropieData.listarInmueblesDisponiblesXTipo(selecc.getTipoDeLocal());
-
-            for (PropiedadInmueble m : ListaTipo) {
-                modelo.addRow(new Object[]{m.getTipoDeLocal(), m.getDireccion(), m.getZona(), m.getSuperficie(), m.getPrecioTasado(), m.getCaracteristicas(), m.getAccesibilidad()});
-            }
-        }
-    }
-
 }
-

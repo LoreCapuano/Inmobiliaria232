@@ -88,9 +88,9 @@ private ContratoAquilerData contratodata = new ContratoAquilerData();
         jLabel11 = new javax.swing.JLabel();
         jTextMontoPesosContratoAlq = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooserfechaInicio = new com.toedter.calendar.JDateChooser();
+        jDateChooserfechaInicio = new org.netbeans.modules.form.InvalidComponent();
         jLabel13 = new javax.swing.JLabel();
-        jDateChooserfechaFin = new com.toedter.calendar.JDateChooser();
+        jDateChooserfechaFin = new org.netbeans.modules.form.InvalidComponent();
         jLabelDetalles = new javax.swing.JLabel();
         jTextFielddetalle = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -271,13 +271,14 @@ private ContratoAquilerData contratodata = new ContratoAquilerData();
         DatosInquilinos1.add(jLabel12);
 
         DatosInquilinos1.add(jDateChooserfechaInicio);
+        jDateChooserfechaInicio.getAccessibleContext().setAccessibleParent(jDateChooserfechaInicio);
 
         jLabel13.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel13.setText("Fecha Fin:");
         DatosInquilinos1.add(jLabel13);
 
-        jDateChooserfechaFin.setPreferredSize(new java.awt.Dimension(100, 20));
         DatosInquilinos1.add(jDateChooserfechaFin);
+        jDateChooserfechaFin.getAccessibleContext().setAccessibleParent(jDateChooserfechaFin);
 
         getContentPane().add(DatosInquilinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 1000, 40));
 
@@ -496,8 +497,8 @@ private ContratoAquilerData contratodata = new ContratoAquilerData();
     private javax.swing.JPanel DatosInquilinos;
     private javax.swing.JPanel DatosInquilinos1;
     private javax.swing.JLabel Titulo;
-    private com.toedter.calendar.JDateChooser jDateChooserfechaFin;
-    private com.toedter.calendar.JDateChooser jDateChooserfechaInicio;
+    private org.netbeans.modules.form.InvalidComponent jDateChooserfechaFin;
+    private org.netbeans.modules.form.InvalidComponent jDateChooserfechaInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
