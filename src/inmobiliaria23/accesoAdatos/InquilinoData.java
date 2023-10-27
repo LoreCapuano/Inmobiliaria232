@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -75,7 +76,7 @@ public class InquilinoData {
             ps.setInt(5, inquilino.getTel());
             ps.setString(6, inquilino.getLugarDetrabajo());
             ps.setString(7, inquilino.getGarante());
-           
+
             ps.setBoolean(8, inquilino.isEstado());
             ps.setInt(9, inquilino.getId_inquilino());
             int exito = ps.executeUpdate();
@@ -106,7 +107,6 @@ public class InquilinoData {
                 inquilino.setTel(rs.getInt("tel"));
                 inquilino.setLugarDetrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setGarante(rs.getString("Garante"));
-                
                 inquilino.setEstado(rs.getBoolean("estado"));
             } 
             else {
@@ -116,7 +116,7 @@ public class InquilinoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inquilino" + ex.getMessage());
-        } 
+        }
         return inquilino;
     }
 
@@ -143,10 +143,43 @@ public class InquilinoData {
                 JOptionPane.showMessageDialog(null, "No existe un inquilino con ese DNI");
             }
             ps.close();
-        
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inquilino" + ex.getMessage());
         }
         return inquilino;
     }
+
+    public ArrayList<Inquilino> listarInquilinos() {
+
+        ArrayList<Inquilino> milista = new ArrayList<>();
+        String sql = "SELECT * FROM inquilino";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Inquilino inqui = new Inquilino();
+                inqui.setId_inquilino(rs.getInt("idInquilino"));
+                inqui.setApellido(rs.getString("Apellido"));
+                inqui.setNombre(rs.getString("Nombre"));
+                inqui.setDni(rs.getInt("Dni"));
+                inqui.setCUIL(rs.getString("CUIL"));
+                inqui.setTel(rs.getInt("tel"));
+                inqui.setLugarDetrabajo(rs.getString("lugarDetrabajo"));
+                inqui.setGarante(rs.getString("Garante"));
+                inqui.setEstado(rs.getBoolean("estado"));
+               
+                milista.add(inqui);
+            }
+
+            return milista;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se pudo listar los inquilnos " + "\n error:" + ex.getMessage());
+            return milista;
+        }
+
+    }
+
 }
