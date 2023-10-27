@@ -36,7 +36,7 @@ public class PropiedadInmueble {
         this.estado = estado;
     }
 
-    public PropiedadInmueble(Propietario Propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
+    public PropiedadInmueble(Propietario propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
         this.propietario = propietario;
         this.tipoDeLocal = tipoDeLocal;
         this.zona = zona;

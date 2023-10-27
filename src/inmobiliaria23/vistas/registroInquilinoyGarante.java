@@ -15,7 +15,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
     public registroInquilinoyGarante() {
         initComponents();
         this.setSize(1024, 768);
-        this.setImage("/inmobiliaria23/recursos/FondoNaranja.jpg");
+        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
 
     }

@@ -86,24 +86,24 @@ public class Inmobiliaria23 {
 //            System.out.println("No se encontro ningun propietario con ese dni");
 //        }
 //LISTAR PROPIETARIOS
-        try {
-            PropietarioData proData = new PropietarioData();
-            List<Propietario> milista = proData.listarPropietarios();//<una lista de tipo>nombre de la lista
-            if (!milista.isEmpty()) {
-                for (Propietario propietario : milista) {
-                    System.out.println("id " + propietario.getId_propietario());
-                    System.out.println("Apellido: " + propietario.getApellido());
-                    System.out.println("Nombre: " + propietario.getNombre());
-
-                    System.out.println("-------------------");
-                }
-            } else {
-                System.out.println("No existen propiedades disponibles");
-            }
-        } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
-        }
-    }   }
+//        try {
+//            PropietarioData proData = new PropietarioData();
+//            List<Propietario> milista = proData.listarPropietarios();//<una lista de tipo>nombre de la lista
+//            if (!milista.isEmpty()) {
+//                for (Propietario propietario : milista) {
+//                    System.out.println("id " + propietario.getId_propietario());
+//                    System.out.println("Apellido: " + propietario.getApellido());
+//                    System.out.println("Nombre: " + propietario.getNombre());
+//
+//                    System.out.println("-------------------");
+//                }
+//            } else {
+//                System.out.println("No existen propiedades disponibles");
+//            }
+//        } catch (NullPointerException npe) {
+//            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
+//        }
+//    }   }
 //*****************************************************************************
 //PROPIEDAD INMUEBLE DATA
 //ALTA INMUEBLE
@@ -260,24 +260,28 @@ public class Inmobiliaria23 {
 //    
 
 //LISTAR CONTRATOS VIGENTES***************
-        ContratoAquilerData  nueva= new ContratoAquilerData();
-        List<ContratoAlquiler> listaContratos = nueva.listarContratosVigentes(2);
-        if (!listaContratos.isEmpty()){
-            for(ContratoAlquiler iterador:listaContratos  ){
-                System.out.println("id contrato alquiler: "+ iterador.getId_contrato());
-                System.out.println("id inquilino: "+ iterador.getInquilino().getId_inquilino());
-                System.out.println("id propiedad: "+ iterador.getIdpropiedad().getIdInmueble());
-                System.out.println("fecha de inicio: "+ iterador.getFechaInicio());
-                System.out.println("fecha vencimiento: "+ iterador.getFechaFinal());
-                System.out.println("monto del alquiler: "+ iterador.getMontoAlquilerPesos());
-                System.out.println("detalle: "+ iterador.getDetalles());
-                System.out.println("estado: "+ iterador.getEstado());
-                
-                System.out.println("*************__________________*************");
-            }
-            
-        }
-        else {
-            System.out.println("no existen contratos vigentes");
-        }
-}}
+//        ContratoAquilerData  nueva= new ContratoAquilerData();
+//        List<ContratoAlquiler> listaContratos = nueva.listarContratosVigentes(2);
+//        if (!listaContratos.isEmpty()){
+//            for(ContratoAlquiler iterador:listaContratos  ){
+//                System.out.println("id contrato alquiler: "+ iterador.getId_contrato());
+//                System.out.println("id inquilino: "+ iterador.getInquilino().getId_inquilino());
+//                System.out.println("id propiedad: "+ iterador.getIdpropiedad().getIdInmueble());
+//                System.out.println("fecha de inicio: "+ iterador.getFechaInicio());
+//                System.out.println("fecha vencimiento: "+ iterador.getFechaFinal());
+//                System.out.println("monto del alquiler: "+ iterador.getMontoAlquilerPesos());
+//                System.out.println("detalle: "+ iterador.getDetalles());
+//                System.out.println("estado: "+ iterador.getEstado());
+//                
+//                System.out.println("*************__________________*************");
+//            }
+//            
+//        }
+//        else {
+//            System.out.println("no existen contratos vigentes");
+//        }
+    ContratoAquilerData  nueva = new ContratoAquilerData();
+    ContratoAlquiler ca = nueva.buscarcontratoporid(1);
+        System.out.println("detalle" + ca.getDetalles());
+    
+    }}

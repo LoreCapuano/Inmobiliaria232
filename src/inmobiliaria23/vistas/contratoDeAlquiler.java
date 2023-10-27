@@ -1,29 +1,58 @@
 package inmobiliaria23.vistas;
 
+import inmobiliaria23.accesoAdatos.ContratoAquilerData;
+import inmobiliaria23.accesoAdatos.InquilinoData;
+import inmobiliaria23.accesoAdatos.PropiedadInmuebleData;
+import inmobiliaria23.entidades.ContratoAlquiler;
+import inmobiliaria23.entidades.Inquilino;
 import inmobiliaria23.entidades.InternaljFrameImagen;
+import inmobiliaria23.entidades.PropiedadInmueble;
+import inmobiliaria23.entidades.Propietario;
 import inmobiliaria23.entidades.panelesImagenes;
 import java.awt.Image;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author Administrador
  */
 public class contratoDeAlquiler extends InternaljFrameImagen {
-
+private ContratoAquilerData contratodata = new ContratoAquilerData();
+    private ContratoAlquiler contrato = null;
+    private InquilinoData inquilino = new InquilinoData();
+   private Inquilino obtengoId = new Inquilino();
+    private PropiedadInmuebleData propiedad = new PropiedadInmuebleData();
+    private PropiedadInmueble idpropiedad = new PropiedadInmueble();
     private panelesImagenes pi = new panelesImagenes();
+    private DefaultTableModel modelo;
+    private List <ContratoAlquiler> contratoslista ;
 
     public contratoDeAlquiler() {
         initComponents();
+        
         this.setSize(1024, 770);
-
-        this.setImage("/inmobiliaria23/recursos/FondoNaranja.jpg");
+        
+        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
         //this.setImage("/inmobiliaria23/recursos/FondoGrandiet.jpg");
         //this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
 
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
-
+       modelo = new DefaultTableModel();
+       
+         
+        armarCabecera();
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,11 +83,19 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jLabel11 = new javax.swing.JLabel();
         jTextMontoPesosContratoAlq = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextFechaIniContratoAlq = new javax.swing.JTextField();
+        jDateChooserfechaInicio = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
-        jTextFechaFinContratoAlq = new javax.swing.JTextField();
+        jDateChooserfechaFin = new com.toedter.calendar.JDateChooser();
+        jLabelDetalles = new javax.swing.JLabel();
+        jTextFielddetalle = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextTelefonosPro3 = new javax.swing.JTextField();
+        jTextestado = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jbBuscar1 = new inmobiliaria23.entidades.BotonNegro();
+        jbBuscar2 = new inmobiliaria23.entidades.BotonNegro();
+        jbBuscar3 = new inmobiliaria23.entidades.BotonNegro();
 
         jTextID.setBackground(new java.awt.Color(236, 226, 200));
         jTextID.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
@@ -91,7 +128,6 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jTextIdContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
         jTextIdContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jTextIdContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextIdContratoAlq.setText(" ");
         jTextIdContratoAlq.setBorder(null);
         jTextIdContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
         jTextIdContratoAlq.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +144,6 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jTextIDInmuebleContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
         jTextIDInmuebleContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jTextIDInmuebleContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextIDInmuebleContratoAlq.setText(" ");
         jTextIDInmuebleContratoAlq.setBorder(null);
         jTextIDInmuebleContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
         DatosInquilinos.add(jTextIDInmuebleContratoAlq);
@@ -120,7 +155,6 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jTextIDInquilinoContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
         jTextIDInquilinoContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jTextIDInquilinoContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextIDInquilinoContratoAlq.setText(" ");
         jTextIDInquilinoContratoAlq.setBorder(null);
         jTextIDInquilinoContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
         DatosInquilinos.add(jTextIDInquilinoContratoAlq);
@@ -144,9 +178,14 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
 
         jbModificar.setBorder(null);
         jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/modificar.png"))); // NOI18N
-        jbModificar.setText(" MODIFICAR");
+        jbModificar.setText("RENOVAR");
         jbModificar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbModificar.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jbModificar);
 
         jbLimpiar.setBorder(null);
@@ -175,7 +214,7 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
 
         jbEliminar.setBorder(null);
         jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/delete.png"))); // NOI18N
-        jbEliminar.setText("ELIMINAR");
+        jbEliminar.setText("RESCINDIR");
         jbEliminar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbEliminar.setPreferredSize(new java.awt.Dimension(120, 30));
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +257,6 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jTextMontoPesosContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
         jTextMontoPesosContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jTextMontoPesosContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextMontoPesosContratoAlq.setText(" ");
         jTextMontoPesosContratoAlq.setBorder(null);
         jTextMontoPesosContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
         DatosInquilinos1.add(jTextMontoPesosContratoAlq);
@@ -227,78 +265,234 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jLabel12.setText("Fecha Inicio:");
         DatosInquilinos1.add(jLabel12);
 
-        jTextFechaIniContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
-        jTextFechaIniContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
-        jTextFechaIniContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextFechaIniContratoAlq.setText(" ");
-        jTextFechaIniContratoAlq.setBorder(null);
-        jTextFechaIniContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
-        DatosInquilinos1.add(jTextFechaIniContratoAlq);
+        DatosInquilinos1.add(jDateChooserfechaInicio);
 
         jLabel13.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel13.setText("Fecha Fin:");
         DatosInquilinos1.add(jLabel13);
 
-        jTextFechaFinContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
-        jTextFechaFinContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
-        jTextFechaFinContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
-        jTextFechaFinContratoAlq.setText(" ");
-        jTextFechaFinContratoAlq.setBorder(null);
-        jTextFechaFinContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
-        DatosInquilinos1.add(jTextFechaFinContratoAlq);
+        jDateChooserfechaFin.setPreferredSize(new java.awt.Dimension(100, 20));
+        DatosInquilinos1.add(jDateChooserfechaFin);
+
+        getContentPane().add(DatosInquilinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 1000, 40));
+
+        jLabelDetalles.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabelDetalles.setText("Detalles:");
+        getContentPane().add(jLabelDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        jTextFielddetalle.setBackground(new java.awt.Color(255, 204, 255));
+        getContentPane().add(jTextFielddetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 440, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel14.setText("Estado:");
-        DatosInquilinos1.add(jLabel14);
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
 
-        jTextTelefonosPro3.setBackground(new java.awt.Color(236, 226, 200));
-        jTextTelefonosPro3.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
-        jTextTelefonosPro3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextTelefonosPro3.setText(" ");
-        jTextTelefonosPro3.setBorder(null);
-        jTextTelefonosPro3.setPreferredSize(new java.awt.Dimension(30, 30));
-        DatosInquilinos1.add(jTextTelefonosPro3);
+        jTextestado.setBackground(new java.awt.Color(236, 226, 200));
+        jTextestado.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextestado.setForeground(new java.awt.Color(51, 51, 51));
+        jTextestado.setBorder(null);
+        jTextestado.setPreferredSize(new java.awt.Dimension(30, 30));
+        getContentPane().add(jTextestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, -1, -1));
 
-        getContentPane().add(DatosInquilinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 1000, 40));
+        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel4.setText("LISTA DE CONTRATO SEGUN SU  ESTADO");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 390, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 700, 420));
+
+        jbBuscar1.setBorder(null);
+        jbBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/buscar-interna.png"))); // NOI18N
+        jbBuscar1.setText("CONTRATOS ACTIVOS");
+        jbBuscar1.setFont(new java.awt.Font("Roboto Cn", 0, 10)); // NOI18N
+        jbBuscar1.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 160, -1));
+
+        jbBuscar2.setBorder(null);
+        jbBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/buscar-interna.png"))); // NOI18N
+        jbBuscar2.setText("CONTRATOS DADOS DE BAJA");
+        jbBuscar2.setFont(new java.awt.Font("Roboto Cn", 0, 10)); // NOI18N
+        jbBuscar2.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 210, -1));
+
+        jbBuscar3.setBorder(null);
+        jbBuscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/buscar-interna.png"))); // NOI18N
+        jbBuscar3.setText("CONTRATOS RENOVADOS");
+        jbBuscar3.setFont(new java.awt.Font("Roboto Cn", 0, 10)); // NOI18N
+        jbBuscar3.setPreferredSize(new java.awt.Dimension(120, 30));
+        jbBuscar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscar3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 160, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAñadirActionPerformed
         // TODO add your handling code here:
+              
+        
+        try {
+
+            if (jTextFielddetalle.getText().isEmpty() || jTextIDInquilinoContratoAlq.getText().isEmpty() || jDateChooserfechaInicio.getDate() == null
+                    || jDateChooserfechaFin.getDate() == null || jTextMontoPesosContratoAlq.getText().isEmpty()
+                    || jTextIDInmuebleContratoAlq.getText().isEmpty() || jTextestado.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "debe completar todos los campos");
+
+            }
+//            
+            else if (!jDateChooserfechaInicio.getDate().after(Date.valueOf(LocalDate.now()))){
+                JOptionPane.showMessageDialog(this, "la fecha no puede ser puede ser anterior a la fecha de hoy");
+            }            
+            else if (!jDateChooserfechaFin.getDate().after(Date.valueOf(LocalDate.now()))){
+                JOptionPane.showMessageDialog(this, "la fecha no puede ser puede ser anterior a la fecha de hoy");
+                
+            }
+            else if (!jTextestado.getText().equalsIgnoreCase("0") && !jTextestado.getText().equalsIgnoreCase("1") && !jTextestado.getText().equalsIgnoreCase("2")){
+                
+                JOptionPane.showMessageDialog(this," el estado solo puede ser 0,1,2");
+            }
+            else{
+            contrato = new ContratoAlquiler(inquilino.buscarInquilinoPorid(Integer.parseInt(jTextIDInquilinoContratoAlq.getText())), jDateChooserfechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                    jDateChooserfechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Double.parseDouble(jTextMontoPesosContratoAlq.getText()),
+                    propiedad.buscarInmuebleXid(Integer.parseInt(jTextIDInmuebleContratoAlq.getText())), jTextFielddetalle.getText(),jTextestado.getText());
+
+            contratodata.crearContrato(contrato);
+            limpiar();
+            }
     }//GEN-LAST:event_jbtnAñadirActionPerformed
-
+    catch (NumberFormatException r) {
+            JOptionPane.showMessageDialog(this, "debe poner valores correctos");
+        } catch (NullPointerException r) {
+//    JOptionPane.showMessageDialog(this, "no exiteeeeeeeeeeeeeeee" );
+            
+        }
+    }
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        if (jTextIdContratoAlq.getText().isEmpty() ){
+            JOptionPane.showMessageDialog(this, "introduzca un idcontrato para buscar");
+              
        
-
+        }
+        else {
+      try {
+            ContratoAlquiler contrato = contratodata.buscarcontratoporid(Integer.parseInt(jTextIdContratoAlq.getText()));
+        jTextIDInmuebleContratoAlq.setText(contrato.getIdpropiedad().getIdInmueble()+"");
+        jTextIDInquilinoContratoAlq.setText(contrato.getInquilino().getId_inquilino()+"");
+        jTextMontoPesosContratoAlq.setText(contrato.getMontoAlquilerPesos()+"");
+        jDateChooserfechaFin.setDate(Date.valueOf(contrato.getFechaFinal()));
+        jDateChooserfechaInicio.setDate(Date.valueOf(contrato.getFechaInicio()));
+        jTextestado.setText(contrato.getEstado());
+        jTextFielddetalle.setText(contrato.getDetalles());
+            
+        }
+      catch (NumberFormatException r){
+          
+          JOptionPane.showMessageDialog(this, "introduzca un id formato numero");
+      }
+      catch (NullPointerException r){
+          
+      }
     }//GEN-LAST:event_jbBuscarActionPerformed
-
+    }
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
+        if (jTextIdContratoAlq.getText().isEmpty() ){
+            JOptionPane.showMessageDialog(this, "introduzca un idcontrato que quiere rescindir");
+              
+       
+        }
+        else {contratodata.rescindirContrato(Integer.parseInt(jTextIdContratoAlq.getText()));
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        jTextIdContratoAlq.setText("");
-        jTextIDInmuebleContratoAlq.setText("");
-        jTextIDInquilinoContratoAlq.setText("");
-        jTextMontoPesosContratoAlq.setText("");
-        jTextFechaIniContratoAlq.setText("");
+        jTextIdContratoAlq.setText(null);
+        jTextIDInmuebleContratoAlq.setText(null);
+        jTextIDInquilinoContratoAlq.setText(null);
+        jTextMontoPesosContratoAlq.setText(null);
+        jDateChooserfechaFin.setDate(null);
+        jDateChooserfechaInicio.setDate(null);
+        jTextestado.setText(null);
+        jTextFielddetalle.setText(null);
         
+       borrarFilaTabla();
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jTextIdContratoAlqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdContratoAlqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextIdContratoAlqActionPerformed
 
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        // TODO add your handling code here:
+         
+        if ( jTextIdContratoAlq.getText().isEmpty()){
+            
+            JOptionPane.showInternalMessageDialog(this, "no hay contrato en los campos" );
+        }
+        else {
+            
+            contratodata.renovarContrato(jDateChooserfechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                    jDateChooserfechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), 
+                    Double.parseDouble(jTextMontoPesosContratoAlq.getText()),Integer.parseInt(jTextIdContratoAlq.getText()) );
+            jTextestado.setText("2");
+        }
+        borrarFilaTabla();
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscar1ActionPerformed
+        // TODO add your handling code here:
+        borrarFilaTabla();
+        cargarcontratosvigentes();
+    }//GEN-LAST:event_jbBuscar1ActionPerformed
+
+    private void jbBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscar2ActionPerformed
+        // TODO add your handling code here:
+        borrarFilaTabla();
+        cargarcontratosrescindidos();
+    }//GEN-LAST:event_jbBuscar2ActionPerformed
+
+    private void jbBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscar3ActionPerformed
+        // TODO add your handling code here:
+        borrarFilaTabla();
+        cargarcontratosrenovados();
+        
+    }//GEN-LAST:event_jbBuscar3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DatosInquilinos;
     private javax.swing.JPanel DatosInquilinos1;
     private javax.swing.JLabel Titulo;
+    private com.toedter.calendar.JDateChooser jDateChooserfechaFin;
+    private com.toedter.calendar.JDateChooser jDateChooserfechaInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -306,16 +500,22 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelDetalles;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFechaFinContratoAlq;
-    private javax.swing.JTextField jTextFechaIniContratoAlq;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFielddetalle;
     private javax.swing.JTextField jTextID;
     private javax.swing.JTextField jTextIDInmuebleContratoAlq;
     private javax.swing.JTextField jTextIDInquilinoContratoAlq;
     private javax.swing.JTextField jTextIdContratoAlq;
     private javax.swing.JTextField jTextMontoPesosContratoAlq;
-    private javax.swing.JTextField jTextTelefonosPro3;
+    private javax.swing.JTextField jTextestado;
     private inmobiliaria23.entidades.BotonNegro jbBuscar;
+    private inmobiliaria23.entidades.BotonNegro jbBuscar1;
+    private inmobiliaria23.entidades.BotonNegro jbBuscar2;
+    private inmobiliaria23.entidades.BotonNegro jbBuscar3;
     private inmobiliaria23.entidades.BotonRojo jbEliminar;
     private inmobiliaria23.entidades.BotonVerde jbGuardar;
     private inmobiliaria23.entidades.BotonNegro jbLimpiar;
@@ -323,4 +523,62 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
     private inmobiliaria23.entidades.BotonAzul jbSalir;
     private inmobiliaria23.entidades.BotonNegro jbtnAñadir;
     // End of variables declaration//GEN-END:variables
+public void limpiar() {
+        jTextIdContratoAlq.setText(null);
+        jTextIDInmuebleContratoAlq.setText(null);
+        jTextIDInquilinoContratoAlq.setText(null);
+        jTextMontoPesosContratoAlq.setText(null);
+        jDateChooserfechaInicio.setDate(null);
+        jDateChooserfechaFin.setDate(null);
+        jTextFielddetalle.setText(null);
+        jTextestado.setText(null);
+    }
+        private void armarCabecera() {
+        modelo.addColumn("IDcontrato");
+        modelo.addColumn("IDinmueble");
+        modelo.addColumn("IDinquilino");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Fecha de inico");
+        modelo.addColumn("Vencimiento");
+        modelo.addColumn("Detalles");
+        modelo.addColumn("Estado");
+        jTable1.setModel(modelo);
+        JTableHeader tableHeader = jTable1.getTableHeader();
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) tableHeader.getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+    }
+        private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+
+        }
+}
+        private void cargarcontratosvigentes() {
+//    borrarFilaTabla();
+        
+        contratoslista = (List) contratodata.listarContratosVigentes(1);
+        for (ContratoAlquiler m : contratoslista) {
+            modelo.addRow(new Object[]{m.getId_contrato(), m.getIdpropiedad().getIdInmueble(), m.getInquilino().getId_inquilino(),m.getMontoAlquilerPesos(),m.getFechaInicio(),m.getFechaFinal(),m.getDetalles(),m.getEstado()});
+        }
+
+    }
+        private void cargarcontratosrescindidos() {
+//    borrarFilaTabla();
+        
+        contratoslista = (List) contratodata.listarContratosVigentes(0);
+        for (ContratoAlquiler m : contratoslista) {
+            modelo.addRow(new Object[]{m.getId_contrato(), m.getIdpropiedad(), m.getInquilino(),m.getMontoAlquilerPesos(),m.getFechaInicio(),m.getFechaFinal(),m.getDetalles(),m.getEstado()});
+        }
+}
+        private void cargarcontratosrenovados() {
+//    borrarFilaTabla();
+        
+        contratoslista = (List) contratodata.listarContratosVigentes(2);
+        for (ContratoAlquiler m : contratoslista) {
+            modelo.addRow(new Object[]{m.getId_contrato(), m.getIdpropiedad(), m.getInquilino(),m.getMontoAlquilerPesos(),m.getFechaInicio(),m.getFechaFinal(),m.getDetalles(),m.getEstado()});
+        }
+}
 }
