@@ -108,8 +108,7 @@ public class InquilinoData {
                 inquilino.setLugarDetrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setGarante(rs.getString("Garante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
-            } 
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe un inquilino con ese Id");
             }
             ps.close();

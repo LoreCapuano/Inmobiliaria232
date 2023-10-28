@@ -72,17 +72,10 @@ public class ContratoAquilerData {
 
     }
 
-     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin  , Double montoNuevo, int id){
-         //AND FechaFin < NOW()
-         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ?   " ;
-        PreparedStatement ps ;
-
-
     public void renovarContrato(LocalDate fechaInicio, LocalDate fechaFin, Double montoNuevo, int id) {
 
         String sql = "UPDATE contrato_aquiler SET Estado = 2,FechaInicio = ?, FechaFin= ?, MontoAlquilerPesos= ? WHERE idContratoAlquiler = ? AND FechaFin < NOW()  ";
         PreparedStatement ps;
-
         try {
 
             ps = con.prepareStatement(sql);
@@ -134,42 +127,78 @@ public class ContratoAquilerData {
         return contratos;
     }
 
-        
-       public  ContratoAlquiler  buscarcontratoporid (int idbuscador){
-           String qsl = " SELECT * FROM contrato_aquiler WHERE idContratoAlquiler = ? ;";
-           ContratoAlquiler ca= null;
+    public ContratoAlquiler buscarcontratoporid(int idbuscador) {
+        String qsl = " SELECT * FROM contrato_aquiler WHERE idContratoAlquiler = ? ;";
+        ContratoAlquiler ca = null;
         try {
-            
+
             PreparedStatement ps = con.prepareStatement(qsl);
             ps.setInt(1, idbuscador);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
-                 ca = new ContratoAlquiler();
+            if (rs.next()) {
+                ca = new ContratoAlquiler();
                 ca.setId_contrato(rs.getInt("idContratoAlquiler"));
                 Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IntInquilino"));
                 ca.setInquilino(soloid);
-                PropiedadInmueble idsolo= pid.buscarInmuebleXid(rs.getInt("intInmueble"));
+                PropiedadInmueble idsolo = pid.buscarInmuebleXid(rs.getInt("intInmueble"));
                 ca.setIdpropiedad(idsolo);
                 ca.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
                 ca.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
                 ca.setMontoAlquilerPesos(rs.getDouble("MontoAlquilerPesos"));
                 ca.setDetalles(rs.getString("Detalles"));
                 ca.setEstado(rs.getString("Estado"));
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "no hay contratos con ese id");
             }
         } catch (SQLException ex) {
             Logger.getLogger(ContratoAquilerData.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-           return ca;
-       }        
-            
-       
-    
+
+        return ca;
+    }
+
+    public void listarcontratosxidinmuebel(int idinmueble) {
+
+        try {
+
+            String sql = "SELECT * FROM `contrato_aquiler` JOIN inmueble ON(contrato_aquiler.intInmueble = inmueble.idInmueble)  "
+                    + "JOIN inquilino ON (contrato_aquiler.IntInquilino = inquilino.idInquilino) WHERE intInmueble = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idinmueble);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ContratoAlquiler idcontrato = new ContratoAlquiler();
+                PropiedadInmueble inmueble = new PropiedadInmueble();
+
+                Inquilino inqui = new Inquilino();
+                idcontrato.setId_contrato(rs.getInt("idContratoAlquiler"));
+                idcontrato.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
+                idcontrato.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
+                idcontrato.setMontoAlquilerPesos(rs.getDouble("MontoAlquilerPesos"));
+                idcontrato.setEstado(rs.getString("Estado"));
+                inmueble.setIdInmueble(rs.getInt("intInmueble"));
+                inmueble.setAccesibilidad(rs.getString("accesibilidad"));
+                inmueble.setCaracteristicas(rs.getString("caracteristicas"));
+                inmueble.setDireccion(rs.getString("Direccion"));
+                inmueble.setEstado(rs.getBoolean("Estado"));
+                inqui.setId_inquilino(rs.getInt("IntInquilino"));
+                inqui.setApellido(rs.getString("Apellido"));
+                inqui.setCUIL(rs.getString("CUIL"));
+                inqui.setGarante(rs.getString("Garante"));
+                System.out.println("idinmueble: : " + inmueble.getIdInmueble() + " " + inmueble.getCaracteristicas() + " DIRECCION:" + inmueble.getDireccion());
+                System.out.println("idcontrato: " + idcontrato.getId_contrato() + " Fecha inicio: " + idcontrato.getFechaInicio() + " Fecha vencimiento: " + idcontrato.getFechaFinal() + " monto en $: " + idcontrato.getMontoAlquilerPesos() + " estado: " + idcontrato.getEstado());
+                System.out.println("idinquilino: : " + inqui.getId_inquilino() + " Apellido: " + inqui.getApellido() + " CUIL: " + inqui.getCUIL() + " GARANTE: " + inqui.getGarante());
+                System.out.println("*****************");
+            }
+            if (!rs.next()) {
+
+                JOptionPane.showMessageDialog(null, "no se encotro propiedad asociado al id establecido");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+
+        }
+
+    }
 }
-
-
-}
-

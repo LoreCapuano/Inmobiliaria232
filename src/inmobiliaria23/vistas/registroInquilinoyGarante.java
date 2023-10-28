@@ -31,11 +31,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         initComponents();
         modelo = new DefaultTableModel();
         this.setSize(1024, 768);
-
-        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
-
         this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
-
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
 
         armarCabecera();
@@ -117,11 +113,16 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel1);
 
         jTextId.setBackground(new java.awt.Color(236, 226, 200));
-        jTextId.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextId.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextId.setForeground(new java.awt.Color(51, 51, 51));
         jTextId.setText(" ");
         jTextId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextId.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextIdKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextId);
 
         jLabel2.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -129,7 +130,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel2);
 
         jTextDni.setBackground(new java.awt.Color(236, 226, 200));
-        jTextDni.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextDni.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextDni.setForeground(new java.awt.Color(51, 51, 51));
         jTextDni.setText(" ");
         jTextDni.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -139,6 +140,11 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
                 jTextDniActionPerformed(evt);
             }
         });
+        jTextDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextDniKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextDni);
 
         jLabel3.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -146,7 +152,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel3);
 
         jTextCuit.setBackground(new java.awt.Color(236, 226, 200));
-        jTextCuit.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextCuit.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextCuit.setForeground(new java.awt.Color(51, 51, 51));
         jTextCuit.setText(" ");
         jTextCuit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -158,11 +164,16 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel4);
 
         jTextApellido.setBackground(new java.awt.Color(236, 226, 200));
-        jTextApellido.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextApellido.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextApellido.setForeground(new java.awt.Color(51, 51, 51));
         jTextApellido.setText(" ");
         jTextApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextApellido.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextApellidoKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextApellido);
 
         jLabel5.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -170,11 +181,16 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel5);
 
         jTextNombre.setBackground(new java.awt.Color(236, 226, 200));
-        jTextNombre.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextNombre.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextNombre.setForeground(new java.awt.Color(51, 51, 51));
         jTextNombre.setText(" ");
         jTextNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextNombre.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNombreKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextNombre);
 
         jLabel6.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -182,7 +198,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel6);
 
         jTextLugarTrabajo.setBackground(new java.awt.Color(236, 226, 200));
-        jTextLugarTrabajo.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextLugarTrabajo.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextLugarTrabajo.setForeground(new java.awt.Color(51, 51, 51));
         jTextLugarTrabajo.setText(" ");
         jTextLugarTrabajo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -194,7 +210,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         DatosInquilinos.add(jLabel9);
 
         jTextTelefonos.setBackground(new java.awt.Color(236, 226, 200));
-        jTextTelefonos.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextTelefonos.setFont(new java.awt.Font("Roboto Cn", 1, 14)); // NOI18N
         jTextTelefonos.setForeground(new java.awt.Color(51, 51, 51));
         jTextTelefonos.setText(" ");
         jTextTelefonos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -309,7 +325,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         jPanel1.add(jbLimpiar);
 
         jbLBuscar.setBorder(null);
-        jbLBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/buscar-interna.png"))); // NOI18N
+        jbLBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inmobiliaria23/recursos/modificar.png"))); // NOI18N
         jbLBuscar.setText("ACTUALIZAR");
         jbLBuscar.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jbLBuscar.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -370,6 +386,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
 
         jLabelEstado.setFont(new java.awt.Font ("Roboto Cn",1,18));
         jLabelEstado.setText("");
+        jLabelEstado.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
         jLabelEstado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 90, 20));
 
@@ -415,18 +432,14 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
                     || jTextAreaGarantes.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
             } else if (inquilinoActual.getDni() == -1 || inquilinoActual.getTel() == -1) {
-
                 JOptionPane.showMessageDialog(this, "Solo puede ingresar numeros");
-
             } else {
                 inquiData.nuevoInquilino(inquilinoActual);
                 limpiarCampos();
             }
-
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "ERROR: " + "\n error:" + nfe.getMessage());
         }
-
     }//GEN-LAST:event_jbtnAñadirActionPerformed
 
     private int parseDni(String input) {
@@ -524,6 +537,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
             inquilinoActual = inquiData.buscarInquilinoPorDni(dni);
 
             if (inquilinoActual != null) {
+                jTextId.setText(String.valueOf(inquilinoActual.getId_inquilino()));
                 jTextApellido.setText(inquilinoActual.getApellido());
                 jTextNombre.setText(inquilinoActual.getNombre());
                 jTextDni.setText(String.valueOf(inquilinoActual.getDni()));
@@ -537,13 +551,9 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
                 } else {
                     jCBestado.setSelected(false);
                     jLabelEstado.setText("Inactivo");
-
                 }
 
             }
-            /*else {
-                JOptionPane.showMessageDialog(null, "No existe un inquilino con ese ID");
-            }*/
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de DNI valido");
 
@@ -554,22 +564,22 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         try {
             String dniStr = jTextDni.getText();
-           //int dni = Integer.parseInt(jTextDni.getText());
+            //int dni = Integer.parseInt(jTextDni.getText());
             //String nombre = jTnombre.getText();
             inquilinoActual.getId_inquilino();
-            inquilinoActual.setDni (Integer.parseInt (jTextDni.getText()));
-            inquilinoActual.setCUIL (jTextCuit.getText());
+            inquilinoActual.setDni(Integer.parseInt(jTextDni.getText()));
+            inquilinoActual.setCUIL(jTextCuit.getText());
             inquilinoActual.setApellido(jTextApellido.getText());
             inquilinoActual.setNombre(jTextNombre.getText());
             inquilinoActual.setLugarDetrabajo(jTextLugarTrabajo.getText());
-            inquilinoActual.setTel(Integer.parseInt (jTextTelefonos.getText()));
+            inquilinoActual.setTel(Integer.parseInt(jTextTelefonos.getText()));
             inquilinoActual.setEstado(jCBestado.isSelected());
             inquilinoActual.setGarante(jTextAreaGarantes.getText());
             //mateData.modificarMateria(materiaActual);
 
-            if (jTextDni.getText().isEmpty()||jTextApellido.getText().isEmpty() || jTextNombre.getText().isEmpty()
-                    ||jTextLugarTrabajo.getText().isEmpty()||jTextTelefonos.getText().isEmpty()
-                    ||jTextAreaGarantes.getText().isEmpty()) {
+            if (jTextDni.getText().isEmpty() || jTextApellido.getText().isEmpty() || jTextNombre.getText().isEmpty()
+                    || jTextLugarTrabajo.getText().isEmpty() || jTextTelefonos.getText().isEmpty()
+                    || jTextAreaGarantes.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
                 return;
             }
@@ -593,7 +603,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
                 inquilinoActual.setTel(inquilinoActual.getTel());
                 inquilinoActual.setEstado(inquilinoActual.isEstado());
                 inquilinoActual.setGarante(inquilinoActual.getGarante());
-                                
+
                 inquiData.modificarInquilino(inquilinoActual);
 
             }
@@ -601,11 +611,11 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debes ingresar un año valido");
 
-    }                                           
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-       inquilinoActual = new Inquilino(
+        inquilinoActual = new Inquilino(
                 jTextApellido.getText(),
                 jTextNombre.getText(),
                 parseDni(jTextDni.getText().trim()),
@@ -633,6 +643,42 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
             JOptionPane.showMessageDialog(this, "ERROR: " + "\n error:" + nfe.getMessage());
     }//GEN-LAST:event_jButtonGuardarActionPerformed
     }
+    private void jTextApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextApellidoKeyTyped
+        char validad = evt.getKeyChar();
+        if (Character.isDigit(validad)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Solo es posible ingresar Letras");
+        }
+    }//GEN-LAST:event_jTextApellidoKeyTyped
+
+    private void jTextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreKeyTyped
+       char validad = evt.getKeyChar();
+        if (Character.isDigit(validad)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Solo es posible ingresar Letras");
+        }
+    }//GEN-LAST:event_jTextNombreKeyTyped
+
+    private void jTextIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIdKeyTyped
+      char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor, ingrese un ID tipo Numero");
+        }
+    }//GEN-LAST:event_jTextIdKeyTyped
+
+    private void jTextDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDniKeyTyped
+      char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Solo puede ingresar Números de documentos");
+        }
+    }//GEN-LAST:event_jTextDniKeyTyped
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DatosInquilinos;
@@ -719,6 +765,7 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
                 inquilino.isEstado(),});
         }
     }
+
     private void borrarDatos() {
 
         int f = jTableInquilinos.getRowCount() - 1; //obtengo total de filas de la tabla
@@ -728,5 +775,5 @@ public class registroInquilinoyGarante extends InternaljFrameImagen {
             modelo.removeRow(f);// remuevo valor por indice en la tabla "jcTable"
         }
     }
-    
+
 }

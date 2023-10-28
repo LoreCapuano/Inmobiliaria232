@@ -35,11 +35,7 @@ public class PropiedadInmueble {
         this.precioTasado = precioTasado;
         this.estado = estado;
     }
-
-
-
 //constructor sin id
-
     public PropiedadInmueble(Propietario propietario, String tipoDeLocal, String zona, String direccion, int superficie, String caracteristicas, String accesibilidad, float precioTasado, boolean estado) {
         this.propietario = propietario;
         this.tipoDeLocal = tipoDeLocal;

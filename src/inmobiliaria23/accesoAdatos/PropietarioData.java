@@ -54,6 +54,7 @@ public class PropietarioData {
             PreparedStatement psInmueble = con.prepareStatement(sqlInmueble);
             psInmueble.setInt(1, idPropietario);
             psInmueble.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Estado del propietario y sus inmuebles borrados correctamente.");
             System.out.println("Estado del propietario y sus inmuebles borrados correctamente.");
             // Cerrar los PreparedStatement
             psPropietario.close();

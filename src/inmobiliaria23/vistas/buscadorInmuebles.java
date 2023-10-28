@@ -1,6 +1,5 @@
 package inmobiliaria23.vistas;
 
-
 import inmobiliaria23.accesoAdatos.*;
 import inmobiliaria23.entidades.InternaljFrameImagen;
 import inmobiliaria23.entidades.PropiedadInmueble;
@@ -23,11 +22,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import inmobiliaria23.entidades.InternaljFrameImagen;
-import inmobiliaria23.entidades.panelesImagenes;
-import java.awt.Image;
-
-
 /**
  *
  * @author Administrador
@@ -35,7 +29,6 @@ import java.awt.Image;
 public class buscadorInmuebles extends InternaljFrameImagen {
 
     private panelesImagenes pi = new panelesImagenes();
-
     private PropiedadInmueble al = new PropiedadInmueble();
     private PropiedadInmuebleData PropieData = new PropiedadInmuebleData();
     private List<inmobiliaria23.entidades.PropiedadInmueble> ListarInmuebles = new ArrayList<>();
@@ -60,17 +53,6 @@ public class buscadorInmuebles extends InternaljFrameImagen {
         armarCabecera();
         this.setSize(1024, 770);
         this.setImage("/inmobiliaria23/recursos/fondoMadera.jpg");
-
-    
-    public buscadorInmuebles() {
-        initComponents();
-        this.setSize(1024, 770);
-        
-
-        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
-
-        this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
-
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
 
     }
@@ -300,7 +282,6 @@ public class buscadorInmuebles extends InternaljFrameImagen {
     private javax.swing.JTable jTableListadoInmuebles;
     private javax.swing.JTextField jTextID;
     // End of variables declaration//GEN-END:variables
-
  // En tu clase, antes de cargar el JComboBox
     private Map<String, PropiedadInmueble> tipoToPropiedadInmueble = new HashMap<>();
     private Map<String, PropiedadInmueble> zonaToPropiedadInmueble = new HashMap<>();
@@ -348,12 +329,12 @@ public class buscadorInmuebles extends InternaljFrameImagen {
     //---------------------------
 
 
-    /*public void cargarComboTipo(){
-        for (Tipo tipo: Tipo.values()){
-            jComboBoxTipo.addItem(tipo.name());
-            
-        }
-    }*/
+//    public void cargarComboTipo(){
+//        for (Tipo tipo: Tipo.values()){
+//            jComboBoxTipo.addItem(tipo.name());
+//            
+//        }
+//    }
     private void armarCabecera() {
         modelo.addColumn("Tipo Local");
         modelo.addColumn("Dirección");
@@ -414,6 +395,5 @@ public class buscadorInmuebles extends InternaljFrameImagen {
         }
 
     }
-
 
 }

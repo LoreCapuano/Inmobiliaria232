@@ -61,7 +61,7 @@ public class PropiedadInmuebleData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inquilino"
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble"
                     + "" + ex.getMessage());
         }
     }
@@ -242,6 +242,7 @@ public class PropiedadInmuebleData {
     public PropiedadInmueble buscarInmuebleXid(int id) {
         String sql = "SELECT* FROM inmueble WHERE idInmueble=? ";
         PropiedadInmueble propiedad = null;
+PropietarioData propData=new PropietarioData();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -250,6 +251,7 @@ public class PropiedadInmuebleData {
             if (rs.next()) {
                 propiedad = new PropiedadInmueble();
                 propiedad.setIdInmueble(id);
+                propiedad.setPropietario(propData.buscarPropietarioPorId(rs.getInt("idPropietario")));
                 propiedad.setTipoDeLocal(rs.getString("Tipo"));
                 propiedad.setZona(rs.getString("Zona"));
                 propiedad.setDireccion(rs.getString("Direccion"));
@@ -258,9 +260,9 @@ public class PropiedadInmuebleData {
                 propiedad.setAccesibilidad(rs.getString("Accesibilidad"));
                 propiedad.setPrecioTasado(rs.getFloat("PrecioBase"));
                 propiedad.setEstado(rs.getBoolean("Estado"));
-            }
-             else {
-                JOptionPane.showMessageDialog(null, "No existe un Inmueble con ese Id");
+
+            } else {
+                //JOptionPane.showMessageDialog(null, "No existe un Inmueble con ese Id");
             }
             ps.close();
 
