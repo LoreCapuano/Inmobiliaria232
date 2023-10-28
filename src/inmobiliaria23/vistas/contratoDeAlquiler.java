@@ -39,13 +39,8 @@ private ContratoAquilerData contratodata = new ContratoAquilerData();
         initComponents();
         
         this.setSize(1024, 770);
-
         
         this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
-
-
-        this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
-
         //this.setImage("/inmobiliaria23/recursos/FondoGrandiet.jpg");
         //this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
 

@@ -1,7 +1,5 @@
 package inmobiliaria23.accesoAdatos;
 
-import inmobiliaria23.entidades.ContratoAlquiler;
-import inmobiliaria23.entidades.Inquilino;
 import inmobiliaria23.entidades.PropiedadInmueble;
 import inmobiliaria23.entidades.Propietario;
 import java.sql.Connection;
@@ -10,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class PropiedadInmuebleData {
@@ -21,7 +17,6 @@ public class PropiedadInmuebleData {
     public PropiedadInmuebleData() {
         con = Conexion.getConexion();
     }
-    private InquilinoData id = new InquilinoData();
 
     public void altaInmueble(PropiedadInmueble propiedadInmueble) {
         String sql = "insert into inmueble (idPropietario,tipo,zona, direccion,superficie,caracteristicas, accesibilidad,"
@@ -66,11 +61,15 @@ public class PropiedadInmuebleData {
         }
     }
 
+    public void fijarPrecios() {
+
+    }
+
     public List<PropiedadInmueble> listarInmueblesDisponibles(Boolean estado) {
         String sql = "SELECT idInmueble,idPropietario, Tipo, Direccion, Zona, Superficie, Caracteristicas,"
                 + " Accesibilidad,precioBase, estado FROM inmueble WHERE estado=1 ";
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
-
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setBoolean(1, estado);
@@ -99,8 +98,8 @@ public class PropiedadInmuebleData {
         }
         return listaInmuebles;
     }
-
-    public void modificarInmueble(PropiedadInmueble propiedadInmueble) {
+    
+    public void modificarInmueble(PropiedadInmueble propiedadInmueble){
         String sql = "UPDATE propiedadInmueble SET idPropietario=?,Tipo = ?, Direccion = ?, "
                 + "Zona = ?, Superficie = ?, Caracteristicas=?, Accesibilidad=?, precioBase=?,estado=? WHERE idInmueble=?";
 
@@ -115,8 +114,8 @@ public class PropiedadInmuebleData {
             ps.setString(6, propiedadInmueble.getCaracteristicas());
             ps.setString(7, propiedadInmueble.getAccesibilidad());
             ps.setFloat(8, propiedadInmueble.getPrecioTasado());
-            ps.setBoolean(9, propiedadInmueble.getEstado());
-            ps.setInt(10, propiedadInmueble.getIdInmueble());
+            ps.setBoolean(9,propiedadInmueble.getEstado());
+            ps.setInt(10,propiedadInmueble.getIdInmueble());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Propietario modificado exitosamente");
@@ -127,13 +126,13 @@ public class PropiedadInmuebleData {
         }
     }
 
-    public List<PropiedadInmueble> listarInmueblesDisponiblesYsuDueño(boolean estado) {
+    public List<PropiedadInmueble> listarInmueblesDisponiblesYsuDueño(Boolean estado) {
 
         String sql = "SELECT i.idInmueble,i.Tipo, i.zona, i.direccion, i.superficie, i.PrecioBase,i.estado,"
                 + " o.nombre AS nombreDueno, o.apellido AS apellidoDueno, o.idPropietario AS idPropietario "
-                + "FROM Inmueble i INNER JOIN Propietario o ON i.idPropietario = o.idPropietario WHERE i.Estado= ?";
+                + "FROM Inmueble i INNER JOIN Propietario o ON i.idPropietario = o.idPropietario WHERE i.Estado= ?;";
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
-
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setBoolean(1, estado);
@@ -149,10 +148,10 @@ public class PropiedadInmuebleData {
                 propiedad.setEstado(rs.getBoolean("estado"));
                 //propiedad.setPropietario(Propietario);
                 // Crear un objeto Dueno con los datos del dueño
-
-                PropietarioData pd = new PropietarioData();
-
-                Propietario propietario = pd.buscarPropietarioPorId(rs.getInt("idPropietario"));
+                
+                PropietarioData pd=new PropietarioData();
+                
+                Propietario propietario =pd.buscarPropietarioPorId(rs.getInt("idPropietario"));
                 //Asignar el propietario a la propiedad
                 //System.out.println("id prop " +propietario.getId_propietario());
                 propiedad.setPropietario(propietario);
@@ -167,8 +166,8 @@ public class PropiedadInmuebleData {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla");
+            
+            JOptionPane.showMessageDialog(null,"error al acceder a la tabla");
         }
         return listaInmuebles;
     }
@@ -269,13 +268,13 @@ public class PropiedadInmuebleData {
         return propiedad;
     }
 
-    public List<PropiedadInmueble> listarInmuebles() {//lista de las propiedades 
+     public List<PropiedadInmueble> listarInmuebles() {//lista de las propiedades 
         String sql = "SELECT* FROM inmueble ";
         //ArrayList<PropiedadInmueble> PropiedadInmueble = new ArrayList<>();
         ArrayList<PropiedadInmueble> listaInmuebles = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
+           
             ResultSet rs = ps.executeQuery();
             //if (listaInmuebles != null) {
             while (rs.next()) {
@@ -300,6 +299,7 @@ public class PropiedadInmuebleData {
         }
         return listaInmuebles;
     }
+
 
     public List<PropiedadInmueble> buscarInmueblesPorTipo(String tipo) {
         String sql = "SELECT * FROM inmueble WHERE Tipo=?";
@@ -500,5 +500,6 @@ public class PropiedadInmuebleData {
         }
         return propiedadesEncontradas;
     }
+
 
 }

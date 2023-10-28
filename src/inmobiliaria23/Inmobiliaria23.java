@@ -47,26 +47,6 @@ public class Inmobiliaria23 {
 //        System.out.println("APELLIDO: " + inquilinoEncontrado.getApellido());
 //        }else {
 //            System.out.println("No se encontro ningun inquilino con ese Dni");
-//LISTAR INQUILINOS
-//try {
-//            InquilinoData inquiData = new InquilinoData();
-//            List<Inquilino> milista = inquiData.listarInquilinos();//<una lista de tipo>nombre de la lista
-//            if (!milista.isEmpty()) {
-//                for (Inquilino inquilino : milista) {
-//                    System.out.println("id " + inquilino.getId_inquilino());
-//                    System.out.println("Apellido: " + inquilino.getApellido());
-//                    System.out.println("Nombre: " + inquilino.getNombre());
-//
-//                    System.out.println("-------------------");
-//                }
-//            } else {
-//                System.out.println("No existen inquilinos");
-//            }
-//        } catch (NullPointerException npe) {
-//            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
-//        }
-//    }
-//}
 //      *****************************************************************************************      
 //ALTA PROPIETARIO        
 //        Propietario propietario=new Propietario("Gimenez","Mercedes",222222, 2213656,"Diagonal 25, La Plata");
@@ -151,6 +131,7 @@ public class Inmobiliaria23 {
 //    }
 //LISTAR INMUEBLES DISPONIBLES
 //        try {
+
 //
 //            PropiedadInmuebleData propieData = new PropiedadInmuebleData();
 //            List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponibles(Boolean.TRUE);//<una lista de tipo>nombre de la lista
@@ -169,11 +150,42 @@ public class Inmobiliaria23 {
 //        } catch (NullPointerException npe) {
 //           JOptionPane.showMessageDialog(null,"error"+npe.getMessage());
 //        }
-        //   }   }
+//    }
+// LISTAR INMUEBLES DISPONIBLES Y SU DUEÑO
+//        PropiedadInmuebleData data = new PropiedadInmuebleData();
+//        Boolean estado = true;
+//        ArrayList<PropiedadInmueble> listaInmuebles = data.listarInmueblesDisponiblesYsuDueño(Boolean.TRUE);//<una lista de tipo>nombre de la lista
+//        if (!listaInmuebles.isEmpty()) {
+//            for (PropiedadInmueble propiedad : listaInmuebles) {
+//                System.out.println("id " + propiedad.getIdInmueble());
+//                System.out.println("Tipo: " + propiedad.getTipoDeLocal());
+//                System.out.println("Direccion: " + propiedad.getDireccion());
+//                System.out.println("Dueño: " + propiedad.getPropietario().getId_propietario());
+
+
+//
+//            PropiedadInmuebleData propieData = new PropiedadInmuebleData();
+//            List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponibles(Boolean.TRUE);//<una lista de tipo>nombre de la lista
+//            if (!listaInmuebles.isEmpty()) {
+//                for (PropiedadInmueble inmueble : listaInmuebles) {
+//                    System.out.println("id " + inmueble.getIdInmueble());
+//                    System.out.println("Tipo: " + inmueble.getTipoDeLocal());
+//                    System.out.println("Direccion: " + inmueble.getDireccion());
+//                   //System.out.println("Dueño: " + inmueble.getPropietario().getId_propietario());
+//                                                                                                                                                            
+//                    System.out.println("-------------------");
+//                }
+//            } else {
+//                System.out.println("No existen propiedades de ese tipo");
+//            }
+//        } catch (NullPointerException npe) {
+//           JOptionPane.showMessageDialog(null,"error"+npe.getMessage());
+//        }
+    //   }   }
 // LISTAR INMUEBLES DISPONIBLES Y SU DUEÑO
 //        try {
 //            PropiedadInmuebleData propieData = new PropiedadInmuebleData();
-//            List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponiblesYsuDueño(true);//<una lista de tipo>nombre de la lista
+//            List<PropiedadInmueble> listaInmuebles = propieData.listarInmueblesDisponiblesYsuDueño(Boolean.TRUE);//<una lista de tipo>nombre de la lista
 //            if (!listaInmuebles.isEmpty()) {
 //                for (PropiedadInmueble inmueble : listaInmuebles) {
 //                    System.out.println("id " + inmueble.getIdInmueble());
@@ -181,6 +193,10 @@ public class Inmobiliaria23 {
 //                    System.out.println("Direccion: " + inmueble.getDireccion());
 //                    System.out.println("Dueño: " + inmueble.getPropietario().getApellido());
 //
+
+//    }
+//}}
+
 //                    System.out.println("-------------------");
 //                }
 //            } else {
@@ -189,7 +205,9 @@ public class Inmobiliaria23 {
 //        } catch (NullPointerException npe) {
 //            JOptionPane.showMessageDialog(null, "error no se encuentra  propietario " + npe.getMessage());
 //        }
-//// LISTAR INMUEBLES
+
+
+// LISTAR INMUEBLES
 //        try {
 //            PropiedadInmuebleData propieData = new PropiedadInmuebleData();
 //            List<PropiedadInmueble> listaInmuebles = propieData.listarInmuebles();//<una lista de tipo>nombre de la lista
@@ -226,30 +244,28 @@ public class Inmobiliaria23 {
 //            System.out.println("No existen propiedades para ese Dueño");
 //        }
 //    }
-//*********************************************************************************
-//CONTRATO DE ALQUILER DATA
-//CREAR CONTRATO
-//        InquilinoData nuevo = new InquilinoData();
-//        Inquilino encontrado = nuevo.buscarInquilinoPorid(3);
-//        System.out.println("" + encontrado.getApellido());
-//
-//        PropiedadInmuebleData nueva = new PropiedadInmuebleData();
-//        PropiedadInmueble encontrada = nueva.buscarInmuebleXid(10);
-//        System.out.println("" + encontrada.getIdInmueble());
-//        ContratoAlquiler nc = new ContratoAlquiler(encontrado, LocalDate.of(2023, 1, 11), LocalDate.of(2026, 1, 11), 40000.00, encontrada, "galpon", "1");
-//        ContratoAquilerData generado = new ContratoAquilerData();
-//        generado.crearContrato(nc);
+
+
+//    InquilinoData nuevo = new InquilinoData();
+//    Inquilino encontrado = nuevo.buscarInquilinoPorid(3);
+//////        System.out.println("" + encontrado.getApellido());
+////    
+//    PropiedadInmuebleData  nueva= new PropiedadInmuebleData();
+//    PropiedadInmueble encontrada = nueva.buscarInmuebleXid(10);
+////        System.out.println(""+ encontrada.getIdInmueble());
+//    
+// ContratoAlquiler nc= new ContratoAlquiler(encontrado,LocalDate.of(2023,1,11),LocalDate.of(2026,1,11),40000.00,encontrada,"galpon","1");
+//    ContratoAquilerData generado = new ContratoAquilerData();
+//    generado.crearContrato(nc);
+//    
+
 //LISTAR CONTRATOS VIGENTES***************
 //        ContratoAquilerData  nueva= new ContratoAquilerData();
 //        List<ContratoAlquiler> listaContratos = nueva.listarContratosVigentes(2);
 //        if (!listaContratos.isEmpty()){
 //            for(ContratoAlquiler iterador:listaContratos  ){
 //                System.out.println("id contrato alquiler: "+ iterador.getId_contrato());
-
 //                System.out.println("id inquilino: "+ iterador.getInquilino().getId_inquilino());
-
-//                System.out.println("id inquilino: "+ iterador.getInquilino());
-
 //                System.out.println("id propiedad: "+ iterador.getIdpropiedad().getIdInmueble());
 //                System.out.println("fecha de inicio: "+ iterador.getFechaInicio());
 //                System.out.println("fecha vencimiento: "+ iterador.getFechaFinal());
@@ -264,11 +280,11 @@ public class Inmobiliaria23 {
 //        else {
 //            System.out.println("no existen contratos vigentes");
 //        }
-
     ContratoAquilerData  nueva = new ContratoAquilerData();
     ContratoAlquiler ca = nueva.buscarcontratoporid(1);
         System.out.println("detalle" + ca.getDetalles());
     
+
     }}
 
 //BUSCAR POR CRITERIOS MULTIPLES
@@ -323,4 +339,7 @@ public class Inmobiliaria23 {
 //        }
 //    }
 
+
+
+    
 
