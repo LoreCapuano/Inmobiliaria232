@@ -37,7 +37,7 @@ public class PropietarioData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario"+ex.getMessage());
         }
     }
 

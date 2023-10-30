@@ -49,17 +49,17 @@ public class registroInmueble extends InternaljFrameImagen {
         jTextID = new javax.swing.JTextField();
         Titulo = new javax.swing.JLabel();
         DatosInquilinos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
         jTextId = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelIdPropietario = new javax.swing.JLabel();
         jTextPropietario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelZona = new javax.swing.JLabel();
         jTextZona = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelDirecc = new javax.swing.JLabel();
         jTextDireccion = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelSuperf = new javax.swing.JLabel();
         jTextSuperficie = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelCaract = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaCaracteristicas = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
@@ -71,16 +71,15 @@ public class registroInmueble extends InternaljFrameImagen {
         botonVerde1 = new inmobiliaria23.entidades.BotonVerde();
         botonAzul1 = new inmobiliaria23.entidades.BotonAzul();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelAccesibilidad = new javax.swing.JLabel();
         jTextAccesibilidad = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelPrecio = new javax.swing.JLabel();
         jTextPrecioBase = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelDisponib = new javax.swing.JLabel();
         jTextDisponibilidad = new javax.swing.JTextField();
         jCBestado = new javax.swing.JCheckBox();
-        jLabel10 = new javax.swing.JLabel();
+        jLabelTipo = new javax.swing.JLabel();
         jComboBoxTipo = new javax.swing.JComboBox<>();
-        jPanelImagen = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -111,15 +110,15 @@ public class registroInmueble extends InternaljFrameImagen {
         DatosInquilinos.setPreferredSize(new java.awt.Dimension(500, 390));
         DatosInquilinos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel1.setText("ID:");
-        DatosInquilinos.add(jLabel1);
+        jLabelId.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelId.setText("ID:");
+        DatosInquilinos.add(jLabelId);
 
         jTextId.setBackground(new java.awt.Color(236, 226, 200));
-        jTextId.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextId.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextId.setForeground(new java.awt.Color(51, 51, 51));
         jTextId.setText(" ");
-        jTextId.setBorder(null);
+        jTextId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextId.setPreferredSize(new java.awt.Dimension(165, 30));
         jTextId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -128,63 +127,72 @@ public class registroInmueble extends InternaljFrameImagen {
         });
         DatosInquilinos.add(jTextId);
 
-        jLabel6.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel6.setText("ID PROPIETARIO:");
-        DatosInquilinos.add(jLabel6);
+        jLabelIdPropietario.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelIdPropietario.setText("ID PROPIETARIO:");
+        DatosInquilinos.add(jLabelIdPropietario);
 
         jTextPropietario.setBackground(new java.awt.Color(236, 226, 200));
-        jTextPropietario.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextPropietario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextPropietario.setForeground(new java.awt.Color(51, 51, 51));
         jTextPropietario.setText(" ");
-        jTextPropietario.setBorder(null);
+        jTextPropietario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextPropietario.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextPropietario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPropietarioKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextPropietario);
 
-        jLabel3.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel3.setText("Zona:");
-        DatosInquilinos.add(jLabel3);
+        jLabelZona.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelZona.setText("Zona:");
+        DatosInquilinos.add(jLabelZona);
 
         jTextZona.setBackground(new java.awt.Color(236, 226, 200));
-        jTextZona.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextZona.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextZona.setForeground(new java.awt.Color(51, 51, 51));
         jTextZona.setText(" ");
-        jTextZona.setBorder(null);
+        jTextZona.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextZona.setPreferredSize(new java.awt.Dimension(165, 30));
         DatosInquilinos.add(jTextZona);
 
-        jLabel2.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel2.setText("Dirección:");
-        DatosInquilinos.add(jLabel2);
+        jLabelDirecc.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelDirecc.setText("Dirección:");
+        DatosInquilinos.add(jLabelDirecc);
 
         jTextDireccion.setBackground(new java.awt.Color(236, 226, 200));
-        jTextDireccion.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextDireccion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextDireccion.setForeground(new java.awt.Color(51, 51, 51));
         jTextDireccion.setText(" ");
-        jTextDireccion.setBorder(null);
+        jTextDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextDireccion.setPreferredSize(new java.awt.Dimension(165, 30));
         DatosInquilinos.add(jTextDireccion);
 
-        jLabel7.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel7.setText("Superficie:");
-        DatosInquilinos.add(jLabel7);
+        jLabelSuperf.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelSuperf.setText("Superficie:");
+        DatosInquilinos.add(jLabelSuperf);
 
         jTextSuperficie.setBackground(new java.awt.Color(236, 226, 200));
-        jTextSuperficie.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextSuperficie.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextSuperficie.setForeground(new java.awt.Color(51, 51, 51));
         jTextSuperficie.setText(" ");
-        jTextSuperficie.setBorder(null);
+        jTextSuperficie.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextSuperficie.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextSuperficieKeyTyped(evt);
+            }
+        });
         DatosInquilinos.add(jTextSuperficie);
 
-        jLabel9.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel9.setText("Características:");
-        DatosInquilinos.add(jLabel9);
+        jLabelCaract.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelCaract.setText("Características:");
+        DatosInquilinos.add(jLabelCaract);
 
         jTextAreaCaracteristicas.setBackground(new java.awt.Color(236, 226, 200));
         jTextAreaCaracteristicas.setColumns(20);
         jTextAreaCaracteristicas.setRows(5);
-        jTextAreaCaracteristicas.setBorder(null);
-        jTextAreaCaracteristicas.setPreferredSize(new java.awt.Dimension(45, 90));
+        jTextAreaCaracteristicas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jScrollPane1.setViewportView(jTextAreaCaracteristicas);
 
         DatosInquilinos.add(jScrollPane1);
@@ -279,47 +287,52 @@ public class registroInmueble extends InternaljFrameImagen {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel4.setText("Accesibilidad:");
-        jPanel2.add(jLabel4);
+        jLabelAccesibilidad.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelAccesibilidad.setText("Accesibilidad:");
+        jPanel2.add(jLabelAccesibilidad);
 
         jTextAccesibilidad.setBackground(new java.awt.Color(236, 226, 200));
-        jTextAccesibilidad.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextAccesibilidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextAccesibilidad.setForeground(new java.awt.Color(51, 51, 51));
         jTextAccesibilidad.setText(" ");
-        jTextAccesibilidad.setBorder(null);
+        jTextAccesibilidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextAccesibilidad.setPreferredSize(new java.awt.Dimension(165, 30));
         jPanel2.add(jTextAccesibilidad);
 
-        jLabel8.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel8.setText("Precio Base:");
-        jPanel2.add(jLabel8);
+        jLabelPrecio.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelPrecio.setText("Precio Base:");
+        jPanel2.add(jLabelPrecio);
 
         jTextPrecioBase.setBackground(new java.awt.Color(236, 226, 200));
-        jTextPrecioBase.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextPrecioBase.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextPrecioBase.setForeground(new java.awt.Color(51, 51, 51));
         jTextPrecioBase.setText(" ");
-        jTextPrecioBase.setBorder(null);
+        jTextPrecioBase.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextPrecioBase.setPreferredSize(new java.awt.Dimension(165, 30));
+        jTextPrecioBase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPrecioBaseKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextPrecioBase);
 
-        jLabel5.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel5.setText("Disponibildad:");
-        jPanel2.add(jLabel5);
+        jLabelDisponib.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelDisponib.setText("Disponibildad:");
+        jPanel2.add(jLabelDisponib);
 
         jTextDisponibilidad.setEditable(false);
         jTextDisponibilidad.setBackground(new java.awt.Color(236, 226, 200));
-        jTextDisponibilidad.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextDisponibilidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextDisponibilidad.setForeground(new java.awt.Color(51, 51, 51));
         jTextDisponibilidad.setText(" ");
-        jTextDisponibilidad.setBorder(null);
+        jTextDisponibilidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextDisponibilidad.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanel2.add(jTextDisponibilidad);
         jPanel2.add(jCBestado);
 
-        jLabel10.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel10.setText("Tipo:");
-        jPanel2.add(jLabel10);
+        jLabelTipo.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabelTipo.setText("Tipo:");
+        jPanel2.add(jLabelTipo);
 
         jComboBoxTipo.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar" }));
@@ -329,13 +342,7 @@ public class registroInmueble extends InternaljFrameImagen {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 190, 330));
 
-        jPanelImagen.setBackground(new java.awt.Color(236, 226, 200));
-        jPanelImagen.setFont(new java.awt.Font("Roboto Cn", 0, 12)); // NOI18N
-        jPanelImagen.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
-        getContentPane().add(jPanelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 460, 150));
-
         jLabel11.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
-        jLabel11.setText("Imagen Inmueble:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
@@ -366,7 +373,7 @@ public class registroInmueble extends InternaljFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAñadirActionPerformed
-        propiedadActual=null;
+        propiedadActual = null;
         try {
             // Validación de campos numéricos
             if (!validarCampoNumerico(jTextPropietario)
@@ -390,10 +397,10 @@ public class registroInmueble extends InternaljFrameImagen {
             PropietarioData propData = new PropietarioData();
             Propietario propietario = propData.buscarPropietarioPorId(idPropietario);
             if (propietario == null) {
-               
+
                 //JOptionPane.showMessageDialog(this, "Error");
                 return; // Sal del método si el propietario no existe
-                 
+
             }
             // Crear la instancia de PropiedadInmueble
             propiedadActual = new PropiedadInmueble(
@@ -410,11 +417,11 @@ public class registroInmueble extends InternaljFrameImagen {
 
             // Agregar la propiedad inmueble
             inmuData.altaInmueble(propiedadActual);
-             limpiarCampos();
+            limpiarCampos();
 
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "ERROR: " + nfe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-           
+
         }
 
     }
@@ -439,7 +446,7 @@ public class registroInmueble extends InternaljFrameImagen {
     }//GEN-LAST:event_botonAzul1ActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-if (propiedadActual != null) {
+        if (propiedadActual != null) {
             inmuData.bajaInmueble(propiedadActual.getIdInmueble());
             propiedadActual = null;
             limpiarCampos();
@@ -465,59 +472,62 @@ if (propiedadActual != null) {
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
        
-    try {
-        int idPropietario = Integer.parseInt(jTextPropietario.getText());
-        PropietarioData propData = new PropietarioData();
-        Propietario propietario = propData.buscarPropietarioPorId(idPropietario);
+        try {
+            if (jTextPropietario.getText().isEmpty()
+                    || jTextZona.getText().isEmpty()
+                    || jTextDireccion.getText().isEmpty()
+                    || jTextSuperficie.getText().isEmpty()
+                    || jTextAreaCaracteristicas.getText().isEmpty()
+                    || jTextAccesibilidad.getText().isEmpty()
+                    || jTextPrecioBase.getText().isEmpty()
+                    || !jCBestado.isSelected()
+                    || ((String) jComboBoxTipo.getSelectedItem()).equalsIgnoreCase("Seleccionar")) {
 
-        if (propiedadActual == null) {
-            JOptionPane.showMessageDialog(this, "No se ha seleccionado una propiedad para modificar.");
-            return;
+                JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+                System.out.println(propiedadActual);
+                System.out.println("***");
+                return;
+            }
+
+            int idPropietario = Integer.parseInt(jTextPropietario.getText());
+            PropietarioData propData = new PropietarioData();
+            Propietario propietario = propData.buscarPropietarioPorId(idPropietario);
+            System.out.println("Entro??");
+            if (propietario != null) {
+                propiedadActual.getIdInmueble();
+                propiedadActual.setPropietario(propietario);
+                propiedadActual.setZona(jTextZona.getText());
+                propiedadActual.setDireccion(jTextDireccion.getText());
+                propiedadActual.setSuperficie(Integer.parseInt(jTextSuperficie.getText()));
+                propiedadActual.setCaracteristicas(jTextAreaCaracteristicas.getText());
+                propiedadActual.setAccesibilidad(jTextAccesibilidad.getText());
+                propiedadActual.setPrecioTasado(Float.parseFloat(jTextPrecioBase.getText()));
+               
+                if (propiedadActual != null) {
+                    inmuData.modificarInmueble(propiedadActual);
+                  
+                    inmuData.modificarInmueble(propiedadActual);
+                    System.out.println(propiedadActual);
+                    System.out.println("modificada");
+                }
+                limpiarCampos();
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Error" + ex.getMessage());
         }
 
-        propiedadActual.setPropietario(propietario);
-        propiedadActual.setTipoDeLocal((String) jComboBoxTipo.getSelectedItem());
-        propiedadActual.setZona(jTextZona.getText());
-        propiedadActual.setDireccion(jTextDireccion.getText());
-        propiedadActual.setSuperficie(Integer.parseInt(jTextSuperficie.getText()));
-        propiedadActual.setCaracteristicas(jTextAreaCaracteristicas.getText());
-        propiedadActual.setAccesibilidad(jTextAccesibilidad.getText());
-        propiedadActual.setPrecioTasado(Integer.parseInt(jTextPrecioBase.getText()));
-        propiedadActual.setEstado(jCBestado.isSelected());
 
-        if (jTextPropietario.getText().isEmpty()
-                || ((String) jComboBoxTipo.getSelectedItem()).equalsIgnoreCase("Seleccionar")
-                || jTextZona.getText().isEmpty()
-                || jTextDireccion.getText().isEmpty()
-                || jTextSuperficie.getText().isEmpty()
-                || jTextAreaCaracteristicas.getText().isEmpty()
-                || jTextAccesibilidad.getText().isEmpty()
-                || jTextPrecioBase.getText().isEmpty()
-                || jCBestado.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
-        } else if (!validarCampoNumerico(jTextPropietario)
-                || !validarCampoNumerico(jTextSuperficie)
-                || !validarCampoNumerico(jTextPrecioBase)) {
-            // Validación de campos numéricos
-        } else {
-            inmuData.modificarInmueble(propiedadActual);
-            limpiarCampos();
-            JOptionPane.showMessageDialog(this, "Propiedad modificada exitosamente.");
-        }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Error en la conversión de datos numéricos.");
-    }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-       try {
+        try {
 
             Integer ID = Integer.parseInt(jTextId.getText().trim());
             propiedadActual = inmuData.buscarInmuebleXid(ID);
-           System.out.println(propiedadActual);
+            //System.out.println(propiedadActual);
             if (propiedadActual != null) {
-                jTextPropietario.setText(String.valueOf (propiedadActual.getPropietario().getId_propietario()));
-                jComboBoxTipo.setSelectedItem((String)propiedadActual.getTipoDeLocal());
+                jTextPropietario.setText(String.valueOf(propiedadActual.getPropietario().getId_propietario()));
+                jComboBoxTipo.setSelectedItem((String) propiedadActual.getTipoDeLocal());
                 jTextZona.setText(propiedadActual.getZona());
                 jTextDireccion.setText(propiedadActual.getDireccion());
                 jTextSuperficie.setText(String.valueOf(propiedadActual.getSuperficie()));
@@ -526,20 +536,18 @@ if (propiedadActual != null) {
                 jTextPrecioBase.setText(String.valueOf(propiedadActual.getPrecioTasado()));
                 jCBestado.setSelected(propiedadActual.getEstado());
                 jTextDisponibilidad.setText(propiedadActual.getEstado() ? "ACTIVO" : "INACTIVO");
-                    
-                }
-            
-            else {
+
+            } else {
                 JOptionPane.showMessageDialog(null, "No se encontro una propiedad con ese ID");
                 limpiarCampos();
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de ID valido");
-            
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR" + e.getMessage());
         }
-                                     
+
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jTextIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIdKeyTyped
@@ -551,6 +559,33 @@ if (propiedadActual != null) {
         }
     }//GEN-LAST:event_jTextIdKeyTyped
 
+    private void jTextPropietarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPropietarioKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor, ingrese un ID tipo Numero");
+        }
+    }//GEN-LAST:event_jTextPropietarioKeyTyped
+
+    private void jTextSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextSuperficieKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor, ingrese un ID tipo Numero");
+        }
+    }//GEN-LAST:event_jTextSuperficieKeyTyped
+
+    private void jTextPrecioBaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPrecioBaseKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Por favor, ingrese un precio en numeros");
+        }
+    }//GEN-LAST:event_jTextPrecioBaseKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DatosInquilinos;
@@ -559,21 +594,20 @@ if (propiedadActual != null) {
     private inmobiliaria23.entidades.BotonVerde botonVerde1;
     private javax.swing.JCheckBox jCBestado;
     private javax.swing.JComboBox<String> jComboBoxTipo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAccesibilidad;
+    private javax.swing.JLabel jLabelCaract;
+    private javax.swing.JLabel jLabelDirecc;
+    private javax.swing.JLabel jLabelDisponib;
+    private javax.swing.JLabel jLabelId;
+    private javax.swing.JLabel jLabelIdPropietario;
+    private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelSuperf;
+    private javax.swing.JLabel jLabelTipo;
+    private javax.swing.JLabel jLabelZona;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelImagen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -595,9 +629,7 @@ if (propiedadActual != null) {
     private inmobiliaria23.entidades.BotonNegro jbtnAñadir;
     // End of variables declaration//GEN-END:variables
 private void cargarTabla() {
-        //PropiedadInmuebleData inmuData = new PropiedadInmuebleData();
-        //PropiedadInmueble propiedad = new PropiedadInmueble();
-
+        
         List<PropiedadInmueble> listaInmuebles;
         boolean estado = true;
 

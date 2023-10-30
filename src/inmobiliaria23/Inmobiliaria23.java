@@ -261,16 +261,16 @@ public class Inmobiliaria23 {
 //*********************************************************************************
 //CONTRATO DE ALQUILER DATA
 //CREAR CONTRATO
-//        InquilinoData nuevo = new InquilinoData();
-//        Inquilino encontrado = nuevo.buscarInquilinoPorid(3);
-//        System.out.println("" + encontrado.getApellido());
-//
-//        PropiedadInmuebleData nueva = new PropiedadInmuebleData();
-//        PropiedadInmueble encontrada = nueva.buscarInmuebleXid(10);
-//        System.out.println("" + encontrada.getIdInmueble());
-//        ContratoAlquiler nc = new ContratoAlquiler(encontrado, LocalDate.of(2023, 1, 11), LocalDate.of(2026, 1, 11), 40000.00, encontrada, "galpon", "1");
-//        ContratoAquilerData generado = new ContratoAquilerData();
-//        generado.crearContrato(nc);
+        InquilinoData nuevo = new InquilinoData();
+        Inquilino encontrado = nuevo.buscarInquilinoPorid(5);
+        System.out.println("" + encontrado.getApellido());
+
+        PropiedadInmuebleData nueva = new PropiedadInmuebleData();
+        PropiedadInmueble encontrada = nueva.buscarInmuebleXid(12);
+        System.out.println("" + encontrada.getIdInmueble());
+        ContratoAlquiler nc = new ContratoAlquiler(encontrado, LocalDate.of(2023, 1, 11), LocalDate.of(2026, 1, 11), 40000.00, encontrada, "galpon", "1");
+        ContratoAquilerData generado = new ContratoAquilerData();
+        generado.crearContrato(nc);
 //LISTAR CONTRATOS VIGENTES***************
 //        ContratoAquilerData  nueva= new ContratoAquilerData();
 //        List<ContratoAlquiler> listaContratos = nueva.listarContratosVigentes(2);

@@ -101,7 +101,7 @@ public class PropiedadInmuebleData {
     }
 
     public void modificarInmueble(PropiedadInmueble propiedadInmueble) {
-        String sql = "UPDATE propiedadInmueble SET idPropietario=?,Tipo = ?, Direccion = ?, "
+        String sql = "UPDATE inmueble SET idPropietario=?,Tipo = ?, Direccion = ?, "
                 + "Zona = ?, Superficie = ?, Caracteristicas=?, Accesibilidad=?, precioBase=?,estado=? WHERE idInmueble=?";
 
         PreparedStatement ps;
@@ -119,11 +119,12 @@ public class PropiedadInmuebleData {
             ps.setInt(10, propiedadInmueble.getIdInmueble());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Propietario modificado exitosamente");
+                System.out.println("Direccion"+propiedadInmueble.getDireccion());
+                JOptionPane.showMessageDialog(null, "Propiedad modificada exitosamente");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble" + ex.getMessage());
         }
     }
 

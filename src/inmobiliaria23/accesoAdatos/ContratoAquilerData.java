@@ -138,9 +138,9 @@ public class ContratoAquilerData {
             if (rs.next()) {
                 ca = new ContratoAlquiler();
                 ca.setId_contrato(rs.getInt("idContratoAlquiler"));
-                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("IntInquilino"));
+                Inquilino soloid = id.buscarInquilinoPorid(rs.getInt("idInquilino"));
                 ca.setInquilino(soloid);
-                PropiedadInmueble idsolo = pid.buscarInmuebleXid(rs.getInt("intInmueble"));
+                PropiedadInmueble idsolo = pid.buscarInmuebleXid(rs.getInt("idInmueble"));
                 ca.setIdpropiedad(idsolo);
                 ca.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
                 ca.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
@@ -161,8 +161,8 @@ public class ContratoAquilerData {
 
         try {
 
-            String sql = "SELECT * FROM `contrato_aquiler` JOIN inmueble ON(contrato_aquiler.intInmueble = inmueble.idInmueble)  "
-                    + "JOIN inquilino ON (contrato_aquiler.IntInquilino = inquilino.idInquilino) WHERE intInmueble = ?";
+            String sql = "SELECT * FROM `contrato_aquiler` JOIN inmueble ON(contrato_aquiler.idInmueble = inmueble.idInmueble)  "
+                    + "JOIN inquilino ON (contrato_aquiler.idInquilino = inquilino.idInquilino) WHERE intInmueble = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idinmueble);
             ResultSet rs = ps.executeQuery();
@@ -177,12 +177,12 @@ public class ContratoAquilerData {
                 idcontrato.setFechaFinal(rs.getDate("FechaFin").toLocalDate());
                 idcontrato.setMontoAlquilerPesos(rs.getDouble("MontoAlquilerPesos"));
                 idcontrato.setEstado(rs.getString("Estado"));
-                inmueble.setIdInmueble(rs.getInt("intInmueble"));
+                inmueble.setIdInmueble(rs.getInt("idInmueble"));
                 inmueble.setAccesibilidad(rs.getString("accesibilidad"));
                 inmueble.setCaracteristicas(rs.getString("caracteristicas"));
                 inmueble.setDireccion(rs.getString("Direccion"));
                 inmueble.setEstado(rs.getBoolean("Estado"));
-                inqui.setId_inquilino(rs.getInt("IntInquilino"));
+                inqui.setId_inquilino(rs.getInt("idInquilino"));
                 inqui.setApellido(rs.getString("Apellido"));
                 inqui.setCUIL(rs.getString("CUIL"));
                 inqui.setGarante(rs.getString("Garante"));
