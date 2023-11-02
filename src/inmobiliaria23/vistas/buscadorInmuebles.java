@@ -1,9 +1,10 @@
 package inmobiliaria23.vistas;
 
 import inmobiliaria23.accesoAdatos.*;
+
 import inmobiliaria23.entidades.InternaljFrameImagen;
-import inmobiliaria23.entidades.PropiedadInmueble;
 import inmobiliaria23.entidades.panelesImagenes;
+
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import java.awt.Image;
+
+
 /**
  *
  * @author Administrador
@@ -23,6 +27,7 @@ import javax.swing.table.JTableHeader;
 public class buscadorInmuebles extends InternaljFrameImagen {
 
     private panelesImagenes pi = new panelesImagenes();
+
     private PropiedadInmueble al = new PropiedadInmueble();
     private PropiedadInmuebleData PropieData = new PropiedadInmuebleData();
     private List<PropiedadInmueble> ListarInmuebles = new ArrayList<>();
@@ -47,6 +52,14 @@ public class buscadorInmuebles extends InternaljFrameImagen {
         armarCabecera();
         this.setSize(1024, 770);
         this.setImage("/inmobiliaria23/recursos/fondoMadera.jpg");
+
+    
+    public buscadorInmuebles() {
+        initComponents();
+        this.setSize(1024, 770);
+        
+        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
+
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
 
@@ -261,6 +274,7 @@ public class buscadorInmuebles extends InternaljFrameImagen {
     // End of variables declaration//GEN-END:variables
 
 
+
 // En tu clase, antes de cargar el JComboBox
     private Map<String, PropiedadInmueble> tipoToPropiedadInmueble = new HashMap<>();
     private Map<String, PropiedadInmueble> zonaToPropiedadInmueble = new HashMap<>();
@@ -373,4 +387,5 @@ public class buscadorInmuebles extends InternaljFrameImagen {
         }
 
     }
+
 }

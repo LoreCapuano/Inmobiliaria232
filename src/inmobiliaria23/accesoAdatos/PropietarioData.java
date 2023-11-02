@@ -156,12 +156,12 @@ public class PropietarioData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Propietario propietario = new Propietario();
-                propietario.setId_propietario(rs.getInt("idPropietario"));
-                propietario.setNombre(rs.getString("Apellido"));
-                propietario.setApellido(rs.getString("Nombre"));
+                propietario.setId_propietario(rs.getInt("id_propietario"));
+                propietario.setNombre(rs.getString("apellido"));
+                propietario.setApellido(rs.getString("nombre"));
                 propietario.setDni(rs.getInt("dni"));
                 propietario.setTel(rs.getInt("tel"));
-                propietario.setDomicilio(rs.getString("Domicilio"));
+                propietario.setDomicilio(rs.getString("domicilio"));
                 propietario.setEstado(rs.getBoolean("estado"));
                 
 

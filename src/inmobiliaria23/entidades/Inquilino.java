@@ -13,6 +13,7 @@ public class Inquilino {
     private int tel;
     private String lugarDetrabajo;
     private String Garante;
+  
     private boolean estado;
 
 //    private char tipo;//??

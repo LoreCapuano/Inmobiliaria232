@@ -39,7 +39,12 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         initComponents();
         this.setSize(1024, 770);
 
+
         this.setImage("/inmobiliaria23/recursos/Image20231020111953.jpg");
+
+        
+        this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
+
         //this.setImage("/inmobiliaria23/recursos/FondoGrandiet.jpg");
         //this.setImage("/inmobiliaria23/recursos/FondoMadera.jpg");
 
@@ -76,7 +81,17 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jbGuardar = new inmobiliaria23.entidades.BotonVerde();
         jbSalir = new inmobiliaria23.entidades.BotonAzul();
         jLabel11 = new javax.swing.JLabel();
+
         jTextDetalles = new javax.swing.JTextField();
+
+        jTextMontoPesosContratoAlq = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jDateChooserfechaInicio = new org.netbeans.modules.form.InvalidComponent();
+        jLabel13 = new javax.swing.JLabel();
+        jDateChooserfechaFin = new org.netbeans.modules.form.InvalidComponent();
+        jLabelDetalles = new javax.swing.JLabel();
+        jTextFielddetalle = new javax.swing.JTextField();
+
         jLabel14 = new javax.swing.JLabel();
         jTextestado = new javax.swing.JTextField();
         jLabelListaContratosXestado = new javax.swing.JLabel();
@@ -248,6 +263,7 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jLabel11.setText("Detalles");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
+
         jTextDetalles.setBackground(new java.awt.Color(236, 226, 200));
         jTextDetalles.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTextDetalles.setForeground(new java.awt.Color(51, 51, 51));
@@ -255,6 +271,41 @@ public class contratoDeAlquiler extends InternaljFrameImagen {
         jTextDetalles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextDetalles.setPreferredSize(new java.awt.Dimension(165, 30));
         getContentPane().add(jTextDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 450, -1));
+
+        jLabel11.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel11.setText("Monto en Pesos:");
+        DatosInquilinos1.add(jLabel11);
+
+        jTextMontoPesosContratoAlq.setBackground(new java.awt.Color(236, 226, 200));
+        jTextMontoPesosContratoAlq.setFont(new java.awt.Font("Roboto Cn", 0, 14)); // NOI18N
+        jTextMontoPesosContratoAlq.setForeground(new java.awt.Color(51, 51, 51));
+        jTextMontoPesosContratoAlq.setBorder(null);
+        jTextMontoPesosContratoAlq.setPreferredSize(new java.awt.Dimension(165, 30));
+        DatosInquilinos1.add(jTextMontoPesosContratoAlq);
+
+        jLabel12.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel12.setText("Fecha Inicio:");
+        DatosInquilinos1.add(jLabel12);
+
+        DatosInquilinos1.add(jDateChooserfechaInicio);
+        jDateChooserfechaInicio.getAccessibleContext().setAccessibleParent(jDateChooserfechaInicio);
+
+        jLabel13.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
+        jLabel13.setText("Fecha Fin:");
+        DatosInquilinos1.add(jLabel13);
+
+        DatosInquilinos1.add(jDateChooserfechaFin);
+        jDateChooserfechaFin.getAccessibleContext().setAccessibleParent(jDateChooserfechaFin);
+
+        getContentPane().add(DatosInquilinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 1000, 40));
+
+        jLabelDetalles.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabelDetalles.setText("Detalles:");
+        getContentPane().add(jLabelDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        jTextFielddetalle.setBackground(new java.awt.Color(255, 204, 255));
+        getContentPane().add(jTextFielddetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 440, -1));
+
 
         jLabel14.setFont(new java.awt.Font("Roboto Cn", 1, 18)); // NOI18N
         jLabel14.setText("Estado:");
@@ -478,11 +529,16 @@ if (jTextIdContratoAlq.getText().isEmpty() ){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DatosInquilinos;
     private javax.swing.JLabel Titulo;
+
     private inmobiliaria23.entidades.BotonNegro jBugttonContratosActivos;
     private inmobiliaria23.entidades.BotonNegro jButtonContratosDadosDeBaja;
     private inmobiliaria23.entidades.BotonNegro jButtonContratosRenovados;
     private com.toedter.calendar.JDateChooser jDateChooserfechaFin;
     private com.toedter.calendar.JDateChooser jDateChooserfechaInicio;
+
+    private org.netbeans.modules.form.InvalidComponent jDateChooserfechaFin;
+    private org.netbeans.modules.form.InvalidComponent jDateChooserfechaInicio;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
